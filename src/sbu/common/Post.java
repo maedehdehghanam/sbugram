@@ -13,10 +13,12 @@ public class Post implements Serializable , Comparable{
 	private String caption;
 	private List<Comment> comments;
 	private boolean deleted = false;
+	private final Profile poster;
 	
-	public Post(Object postingPicture, String caption){
+	public Post(Object postingPicture, String caption, Profile poster){
 		this.postingPicture = postingPicture;
 		this.caption = caption;
+		this.poster = poster;
 		comments = new Vector<>();
 		numberOfLikes = 0;
 		likedPeople = new Vector<>();
@@ -30,7 +32,7 @@ public class Post implements Serializable , Comparable{
     }*/
     @Override
   	public String toString(){
-  		return caption + "\n" + "likes = " + numberOfLikes;
+  		return poster.getUserName() + caption + "\n" + "likes = " + numberOfLikes;
   	}
   	public void deletePost(){
   		deleted = true;
@@ -65,5 +67,7 @@ public class Post implements Serializable , Comparable{
     public synchronized void deleteComment(Comment c){
     	comments.remove(c);
     }
-    //public 
+    public Profile getPoster(){
+    	return poster;
+    } 
 }

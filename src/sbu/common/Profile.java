@@ -56,6 +56,9 @@ public class Profile implements Serializable {
     public int getBirthyear(){
       return (birthyear);
     }
+    public void post(Post thePost){
+      posts.add(thePost);
+    }
     public Profile authenticate(String username,String password){
       if(this.username.equals(username) && this.password.equals(password)) 
         return this;

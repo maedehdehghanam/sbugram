@@ -23,6 +23,7 @@ public class ClientHandler implements Runnable{
 		}
 	}
 	@Override
+	//some apis are yet too be made
 	public void run(){
 		while(clientOnline){
 			Map<String,Object> income = null;
@@ -39,11 +40,27 @@ public class ClientHandler implements Runnable{
 						break;
 					case LOGOUT:
 						answer = API.logout(income);
+						clientOnline = false;
 						break;
 					case SIGNUP:
 						answer = API.signup(income);
 						break;
-				}
+					case POST:
+						answer = API.post(income);
+						break;
+					case LIKE:
+						answer = API.like(income);
+						break; 
+					case UNLIKE :
+						answer = API.unlike(income);
+						break;
+					case COMMENT :
+						answer = API.comment(income);
+						break;
+					case DELETE_POST:
+						answer = API.deletePost(income);
+						break;
+ 				}
 				socketOut.writeObject(answer);
 				socketOut.flush();
 			}catch(Exception e){
