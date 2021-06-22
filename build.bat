@@ -12,6 +12,6 @@ javac -d out --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxm
 pause
 cls
 
-java -cp out --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml  sbu.server.Server
+java -cp out sbu.server.Server
 
 pause
