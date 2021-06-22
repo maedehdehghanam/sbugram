@@ -1,4 +1,4 @@
-package sbu.client;
+package sbu.server;
 
 import sbu.common.*; 
 
@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
-public class ClientHandler{
+public class ClientHandler implements Runnable{
 
 	private Socket userSocket;
 	private ObjectOutputStream socketOut;
