@@ -67,6 +67,9 @@ public class Post implements Serializable , Comparable{
     public synchronized void deleteComment(Comment c){
     	comments.remove(c);
     }
+    public synchronized void editPost(String newCaption){
+    	caption = newCaption;
+    }
     public Profile getPoster(){
     	return poster;
     } 

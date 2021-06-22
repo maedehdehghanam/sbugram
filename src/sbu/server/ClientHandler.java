@@ -60,6 +60,9 @@ public class ClientHandler implements Runnable{
 					case DELETE_POST:
 						answer = API.deletePost(income);
 						break;
+					case EDIT_POST:
+						answer = API.editPost(income);
+						break;
  				}
 				socketOut.writeObject(answer);
 				socketOut.flush();

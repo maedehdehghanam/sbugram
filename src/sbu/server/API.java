@@ -120,5 +120,15 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
-
+	public static Map<String,Object> editPost(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.EDIT_POST);
+		Post thePost = (Post) income.get("post");
+		String newCaption = (String) income.get("caption");
+		thePost.editPost(newCaption);
+		thePost.deletePost();
+		DBManager.getInstance().updateDataBase();
+		ans.put("success", new Boolean(true));
+		return ans;
+	}
 }
