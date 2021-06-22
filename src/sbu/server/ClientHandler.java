@@ -30,7 +30,10 @@ public class ClientHandler implements Runnable{
 				income = (Map<String,Object>) socketIn.readObject();
 				Map<String,Object> answer = null;
 				Command command = (Command) income.get("command");
-				//API works
+				/*switch(command){
+					case CHECK_USERNAME:
+					answer =
+				}*/
 				socketOut.writeObject(answer);
 				socketOut.flush();
 			}catch(Exception e){
