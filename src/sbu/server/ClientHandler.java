@@ -30,10 +30,20 @@ public class ClientHandler implements Runnable{
 				income = (Map<String,Object>) socketIn.readObject();
 				Map<String,Object> answer = null;
 				Command command = (Command) income.get("command");
-				/*switch(command){
+				switch(command){
 					case CHECK_USERNAME:
-					answer =
-				}*/
+						answer = API.doesUserNameExists(income);
+						break;
+					case LOGIN:
+						answer = API.login(income);
+						break;
+					case LOGOUT:
+						answer = API.logout(income);
+						break;
+					case SIGNUP:
+						answer = API.signup(income);
+						break;
+				}
 				socketOut.writeObject(answer);
 				socketOut.flush();
 			}catch(Exception e){
