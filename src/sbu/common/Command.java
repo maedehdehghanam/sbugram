@@ -6,8 +6,9 @@ public enum Command{
 	LOGOUT,
 	POST,
 	LIKE,
+	UNLIKE,
 	EDIT_POST,
+	DELETE_POST,
 	COMMENT,
 	UPDATE_PROFILE
-
 }

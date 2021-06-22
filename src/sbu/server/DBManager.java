@@ -39,7 +39,7 @@ public class DBManager{
 	  		else{
 			    FileInputStream fin = new FileInputStream(DBManager.postsPath);
 			    ObjectInputStream inFromFile = new ObjectInputStream(fin);
-			    ServerEXE.mails = new ConcurrentSkipListSet<>( (ConcurrentSkipListSet<Mail>) inFromFile.readObject());
+			    Server.posts = new ConcurrentSkipListSet<>( (ConcurrentSkipListSet<Post>) inFromFile.readObject());
 			    inFromFile.close();
 			    fin.close();
 			}

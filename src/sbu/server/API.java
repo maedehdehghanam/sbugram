@@ -69,7 +69,7 @@ public class API{
 		Post posting = (Post) income.get("post");
 		if(posting == null){
 			ans.put("success", new Boolean(false));
-			System.out.println("-> Posting failed! Invalid file has been chosen.")
+			System.out.println("-> Posting failed! Invalid file has been chosen.");
 		}
 		else{
 			Server.profiles.get(posting.getPoster().getUserName()).post(posting);
@@ -113,7 +113,7 @@ public class API{
 	public static  Map<String,Object> deletePost(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.DELETE_POST);
-		Post thePost = (Post) income.get("post")
+		Post thePost = (Post) income.get("post");
 		Server.posts.remove(thePost);
 		thePost.deletePost();
 		DBManager.getInstance().updateDataBase();
