@@ -6,14 +6,15 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #11100E;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #11100E;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.sinupController">
    <children>
-      <TextField fx:id="userField" layoutX="99.0" layoutY="176.0" prefHeight="35.0" prefWidth="211.0" promptText="username" style="-fx-background-color: #1791B1;" />
-      <PasswordField fx:id="passField" layoutX="99.0" layoutY="224.0" prefHeight="35.0" prefWidth="211.0" promptText="password" style="-fx-background-color: #1791B1;" />
-      <TextField fx:id="birthYear" layoutX="99.0" layoutY="275.0" prefHeight="35.0" prefWidth="211.0" promptText="what is your birthyear?" style="-fx-background-color: #6a1d40;" />
-      <ChoiceBox fx:id="cb" layoutX="99.0" layoutY="331.0" prefHeight="35.0" prefWidth="211.0" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="userField" layoutX="99.0" layoutY="151.0" prefHeight="35.0" prefWidth="211.0" promptText="username" style="-fx-background-color: #1791B1;" />
+      <PasswordField fx:id="passField" layoutX="99.0" layoutY="194.0" prefHeight="35.0" prefWidth="211.0" promptText="password" style="-fx-background-color: #1791B1;" />
+      <TextField fx:id="birthYear" layoutX="99.0" layoutY="250.0" prefHeight="35.0" prefWidth="211.0" promptText="what is your birthyear?" style="-fx-background-color: #1791B1;" />
       <TextField fx:id="recoverPass" layoutX="99.0" layoutY="380.0" prefHeight="35.0" prefWidth="211.0" promptText="recover password answer" style="-fx-background-color: #9F81CD;" />
       <Button fx:id="signup" layoutX="141.0" layoutY="502.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#282405">
          <font>
@@ -21,7 +22,17 @@
          </font>
       </Button>
       <Label fx:id="usernameTaken" layoutX="134.0" layoutY="426.0" text="username is already taken " textFill="#da1313" visible="false" />
-      <Label fx:id="ageError" layoutX="106.0" layoutY="443.0" text="you are way too young:( maybe later!" textFill="#eb1b1b" visible="false" />
+      <Label fx:id="ageError" layoutX="106.0" layoutY="443.0" text="Ops! too young:( maybe later!" textFill="#eb1b1b" visible="false" />
       <Label fx:id="fillFields" layoutX="157.0" layoutY="467.0" text="please fill all fields" textFill="#e41010" visible="false" />
+      <VBox layoutX="102.0" layoutY="329.0" prefHeight="195.0" prefWidth="205.0" style="-fx-background-color: #9F81CD;">
+         <children>
+            <ChoiceBox fx:id="options" prefHeight="22.0" prefWidth="209.0" style="-fx-background-color: #1791B1;" />
+         </children>
+      </VBox>
+      <Text fill="WHITE" layoutX="99.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your recovering question">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

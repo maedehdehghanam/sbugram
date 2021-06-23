@@ -16,55 +16,46 @@ public class DBManager{
 		return theDBManager;
 	}
 	public synchronized void initializeServer(){
-		try{
-			File file = new File(profilesPath);
-			if(file.length() == 0){
-				Server.profiles = new ConcurrentHashMap<>();
-			}
-			else{
-			    FileInputStream fin=new FileInputStream(DBManager.profilesPath);
-			    ObjectInputStream inFromFile=new ObjectInputStream(fin);
-			    Server.profiles = new ConcurrentHashMap<>( (ConcurrentHashMap<String, Profile>) inFromFile.readObject());
-			    inFromFile.close();
-			    fin.close();
-			}
-	  	}catch(Exception e){
-	  		e.printStackTrace();
-	  	}
-	  	try {
-	  		File file = new File(postsPath);
-	  		if(file.length() == 0){
-	  			 Server.posts = new ConcurrentSkipListSet<>();
-	  		}
-	  		else{
+		try {
+		    FileInputStream fin=new FileInputStream(DBManager.profilesPath);
+		    ObjectInputStream inFromFile=new ObjectInputStream(fin);
+		    Server.profiles = new ConcurrentHashMap<>( (ConcurrentHashMap<String, Profile>) inFromFile.readObject());
+		    inFromFile.close();
+		    fin.close();
+		    }catch(EOFException | StreamCorruptedException e){
+    			Server.profiles = new ConcurrentHashMap<>();
+            }catch (Exception e){
+    			e.printStackTrace();
+  			}
+  			try {
 			    FileInputStream fin = new FileInputStream(DBManager.postsPath);
 			    ObjectInputStream inFromFile = new ObjectInputStream(fin);
 			    Server.posts = new ConcurrentSkipListSet<>( (ConcurrentSkipListSet<Post>) inFromFile.readObject());
 			    inFromFile.close();
 			    fin.close();
-			}
-  		}catch(Exception e){
-  			e.printStackTrace();
-  		}
+			  }
+			  catch(EOFException | StreamCorruptedException e){
+			    Server.posts = new ConcurrentSkipListSet<>();
+			  }catch (Exception e){
+			    e.printStackTrace();
+			  }
 	}
 	public synchronized void updateDataBase(){
-		try{
-            FileOutputStream fout = new FileOutputStream(profilesPath);
-            ObjectOutputStream objToFile = new ObjectOutputStream(fout);
-            objToFile.writeObject(Server.profiles); //writing profiles
-            objToFile.close();
-            fout.close();
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
-        try{
-        	FileOutputStream fout = new FileOutputStream(postsPath);
-            ObjectOutputStream objToFile = new ObjectOutputStream(fout);
-            objToFile.writeObject(Server.profiles); //writing posts
-            objToFile.close();
-            fout.close();
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+		  try {
+			      FileOutputStream fout = new FileOutputStream(profilesPath);
+			      ObjectOutputStream objToFile = new ObjectOutputStream(fout);
+			      objToFile.writeObject(Server.profiles); //writing profiles
+			      objToFile.close();
+			      fout.close();
+
+			      fout = new FileOutputStream(postsPath);
+			      objToFile = new ObjectOutputStream(fout);
+			      objToFile.writeObject(Server.posts); // writing mails
+			      objToFile.close();
+			      fout.close();
+			  } catch (IOException e) {
+			    e.printStackTrace();
+			  }
+
     }
 }

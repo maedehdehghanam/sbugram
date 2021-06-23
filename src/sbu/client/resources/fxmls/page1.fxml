@@ -23,16 +23,17 @@
             <Image url="@../../../../../images/appIcon.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="forgotPassButton" layoutX="129.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #FF2079;" text="forgot password?" textFill="#1b1505">
+      <Button fx:id="forgotPassButton" layoutX="140.0" layoutY="507.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #FF2079;" text="forgot password?" textFill="#1b1505">
          <font>
             <Font name="0 Nikoo Italic" size="13.0" />
          </font>
       </Button>
       <Label fx:id="fillFields" layoutX="103.0" layoutY="407.0" prefHeight="17.0" prefWidth="199.0" text="PLease fill all the fields" textAlignment="RIGHT" textFill="#fc0707" visible="false" />
-      <Button fx:id="signUpButton" layoutX="214.0" layoutY="453.0" mnemonicParsing="false" onAction="#signupController" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#392805">
+      <Button fx:id="signUpButton" layoutX="214.0" layoutY="453.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#392805">
          <font>
             <Font name="0 Nikoo Italic" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="notFound" layoutX="103.0" layoutY="390.0" text="username does not exist" textFill="#eb0202" visible="false" />
    </children>
 </AnchorPane>

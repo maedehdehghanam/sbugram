@@ -29,6 +29,8 @@ public class Page1Controller {
     private PasswordField passField;
     @FXML
     private Button forgotPassButton;
+    @FXML
+    private Label notFound;
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -45,7 +47,7 @@ public class Page1Controller {
     }
     public void loginController(ActionEvent event){
         connectToServer();
-
+        notFound.setVisible(false);
         label.setVisible(false);
         fillFields.setVisible(false);
 
@@ -56,26 +58,30 @@ public class Page1Controller {
             fillFields.setVisible(true);
             return;
         }
-        Profile profile = API.login(usernameCheck,passwordCheck);
+        if(! API.doesUserNameExists(usernameCheck))
+        {
+            notFound.setVisible(true);
+        }
+       /* Profile profile = API.login(usernameCheck,passwordCheck);
         if(profile == null){
             //showInvalidLoginDialog();
+            notFound.setVisible(true);
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
-        alert.showAndWait();
-        label.setVisible(true);
-        /*
-        else if(usernameCheck.equals("ali") && passwordCheck.equals("1111")){
+        
+        if(usernameCheck.equals("ali") && passwordCheck.equals("1111")){
             System.out.println("hey!");
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
             alert.showAndWait();
         }else{
             label.setVisible(true);
-        }
+        }*/
         //sbu.client.Main.fxmlYarooKone("timeline.fxml");*/
     } 
-    /*
-    public void signupController(ActionEvent event){
-
+    
+    /*public void signupController(ActionEvent event){
+        sbu.client.Main.fxmlYarooKone("signup.fxml");
+        String username = userField.getText();
+        String password =  passField.getText();
     }*/
 }
