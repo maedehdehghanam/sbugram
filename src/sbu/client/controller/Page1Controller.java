@@ -31,6 +31,10 @@ public class Page1Controller {
     private Button forgotPassButton;
     @FXML
     private Label notFound;
+    @FXML
+    private CheckBox showpassCheck;
+    @FXML
+    private TextField showpassField;
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -52,33 +56,50 @@ public class Page1Controller {
         fillFields.setVisible(false);
 
         String usernameCheck = userField.getText();
-        String passwordCheck =  passField.getText();
+        String passwordCheck;
+        if(passField.isVisible()){
+            passwordCheck = passField.getText();
+        }
+        else{
+            passwordCheck = showpassField.getText();
+        }
 
         if(usernameCheck.isEmpty()|| passwordCheck.isEmpty()){
             fillFields.setVisible(true);
             return;
         }
-        if(! API.doesUserNameExists(usernameCheck))
+        /*if(! API.doesUserNameExists(usernameCheck))
         {
             notFound.setVisible(true);
-        }
+        }*/
        /* Profile profile = API.login(usernameCheck,passwordCheck);
         if(profile == null){
             //showInvalidLoginDialog();
             notFound.setVisible(true);
             return;
-        }
+        }*/
         
         if(usernameCheck.equals("ali") && passwordCheck.equals("1111")){
             System.out.println("hey!");
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
             alert.showAndWait();
+            sbu.client.Main.fxmlYarooKone("signup.fxml");
         }else{
             label.setVisible(true);
-        }*/
+        }
         //sbu.client.Main.fxmlYarooKone("timeline.fxml");*/
     } 
-    
+    public void showPass(){
+        if(!showpassField.isVisible()){
+            showpassField.setVisible(true);
+            passField.setVisible(false);
+            showpassField.setText(passField.getText());
+        } else {
+            showpassField.setVisible(false);
+            passField.setVisible(true);
+            passField.setText(showpassField.getText());
+        }
+    }
     /*public void signupController(ActionEvent event){
         sbu.client.Main.fxmlYarooKone("signup.fxml");
         String username = userField.getText();

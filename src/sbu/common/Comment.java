@@ -1,5 +1,7 @@
 package sbu.common;
-public class Comment{
+import java.io.*;
+import java.util.*;
+public class Comment implements Serializable{
 	private final Profile sender;
 	private final Profile reciever;
 	private final String text;

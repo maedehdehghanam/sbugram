@@ -17,13 +17,17 @@ public class Connector{
 		return isConnected;
 	}
 	public static Boolean connectToServer() throws Exception{
-		if(socket != null) 
-			return false;
+		if(socket != null){
+			System.out.println("***************************"); 
+			return false;}
 		
 		try{
 			System.out.println("server's ip is : " + serverAddress);
 			socket = new Socket( serverAddress, PORT);
 			socketOut = new ObjectOutputStream( socket.getOutputStream() );
+			if(socketOut != null){
+				System.out.println("***************************");
+			}
 			socketIn = new ObjectInputStream( socket.getInputStream() );
 			isConnected = true;
 			return true;

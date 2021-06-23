@@ -16,8 +16,8 @@ public class ClientHandler implements Runnable{
 	public ClientHandler(Socket socket){
 		try{
 			userSocket = socket;
-			this.socketIn = new ObjectInputStream (userSocket.getInputStream() );
-			this.socketOut = new ObjectOutputStream (userSocket.getOutputStream() );
+			this.socketIn = new ObjectInputStream (socket.getInputStream() );
+			this.socketOut = new ObjectOutputStream (socket.getOutputStream() );
 		} catch(IOException e){
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class ClientHandler implements Runnable{
 						break;
  				}
 				socketOut.writeObject(answer);
-				socketOut.flush();
+				//socketOut.flush();
 			}catch(Exception e){
 				e.printStackTrace();
 			}

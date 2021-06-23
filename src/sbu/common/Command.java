@@ -1,5 +1,7 @@
 package sbu.common;
-public enum Command{
+import java.io.*;
+import java.util.*;
+public enum Command implements Serializable{
 	CHECK_USERNAME,
 	LOGIN,
 	SIGNUP,

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -35,5 +36,11 @@
          </font>
       </Button>
       <Label fx:id="notFound" layoutX="103.0" layoutY="390.0" text="username does not exist" textFill="#eb0202" visible="false" />
+      <TextField fx:id="showpassField" layoutX="100.0" layoutY="347.0" onAction="#showPass" prefHeight="38.0" prefWidth="205.0" style="-fx-background-color: #1791B1;" visible="false" />
+      <CheckBox fx:id="showpassCheck" layoutX="315.0" layoutY="354.0" mnemonicParsing="false" onAction="#showPass" prefHeight="25.0" prefWidth="70.0" text="password" textFill="#f8f6f6">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
