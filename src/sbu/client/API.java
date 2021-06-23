@@ -60,5 +60,13 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
-	
+	public static Boolean comment(Post post,Comment cm){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("comment",cm);
+		toSend.put("post", post);
+		toSend.put("command",Command.COMMENT);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (boolean) recieved.get("success");
+	}
+
 }
