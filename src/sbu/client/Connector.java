@@ -16,9 +16,10 @@ public class Connector{
 	public static boolean isConnected(){
 		return isConnected;
 	}
-	public static Boolean connectToServer(){
+	public static Boolean connectToServer() throws Exception{
 		if(socket != null) 
 			return false;
+		
 		try{
 			System.out.println("server's ip is : " + serverAddress);
 			socket = new Socket( serverAddress, PORT);
@@ -26,11 +27,10 @@ public class Connector{
 			socketIn = new ObjectInputStream( socket.getInputStream() );
 			isConnected = true;
 			return true;
-
 		}catch (ConnectException e){
+		}catch (IOException e) {
 		}
-		catch (IOException e) {
-		}
+		
 		return false;
 	}
 	public static Boolean disconnectFromServer() throws Exception{
@@ -57,4 +57,12 @@ public class Connector{
 		return false;
 	}
 	//serve method has not made yet
+	public static Map<String,Object> serve(Map<String,Object> toSend)
+	 throws Exception {
+	 	socketOut.writeObject(toSend);
+		socketOut.flush();
+		socketOut.reset();
+		Map<String,Object>	recieved = (Map<String,Object>) socketIn.readObject();
+		return recieved;
+	}
 }
