@@ -31,4 +31,11 @@ public class API{
 		if ( recieved.get("answer") == null ) return null;
 		return (Boolean) recieved.get("answer");
 	}
+	public static Boolean logout(){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.LOGOUT);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		if ( recieved.get("answer") == null ) return false;
+		return (Boolean) recieved.get("answer");
+	}
 }
