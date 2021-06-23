@@ -57,12 +57,19 @@ public class Connector{
 		return false;
 	}
 	//serve method has not made yet
-	public static Map<String,Object> serve(Map<String,Object> toSend)
-	 throws Exception {
-	 	socketOut.writeObject(toSend);
-		socketOut.flush();
-		socketOut.reset();
-		Map<String,Object>	recieved = (Map<String,Object>) socketIn.readObject();
+	public static Map<String,Object> serve(Map<String,Object> toSend){
+		Map<String,Object> recieved = null;
+		try{
+			socketOut.writeObject(toSend);
+			socketOut.flush();
+			socketOut.reset();
+			recieved = (Map<String,Object>) socketIn.readObject();
+			return recieved;
+
+		} catch (ClassNotFoundException e){
+		} catch( IOException e){
+			e.printStackTrace();
+		}
 		return recieved;
 	}
 }
