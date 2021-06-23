@@ -14,10 +14,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         fStage=stage;
-        fxmlYarooKone("page1.fxml");
+        newfxml("page1.fxml");
         
     }
-    public static void fxmlYarooKone(String fmxlPath){
+    public static void newfxml(String fmxlPath){
        try{
             Parent root = FXMLLoader.load(new File("./src/sbu/client/resources/fxmls/" + fmxlPath).toURI().toURL());
             Scene scene = new Scene(root);

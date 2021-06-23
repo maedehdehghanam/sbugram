@@ -131,4 +131,10 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
+	/*public static Map<String,Object> follow(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.FOLLOW);
+		Profile follow = (Profile) income.get("following");
+		Profile follower =(Profile) in
+	}*/
 }

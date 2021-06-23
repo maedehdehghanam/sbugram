@@ -9,6 +9,7 @@ public enum Command implements Serializable{
 	POST,
 	LIKE,
 	UNLIKE,
+	FOLLOW,
 	EDIT_POST,
 	DELETE_POST,
 	COMMENT,

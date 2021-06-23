@@ -30,7 +30,7 @@
          </font>
       </Button>
       <Label fx:id="fillFields" layoutX="103.0" layoutY="407.0" prefHeight="17.0" prefWidth="199.0" text="PLease fill all the fields" textAlignment="RIGHT" textFill="#fc0707" visible="false" />
-      <Button fx:id="signUpButton" layoutX="214.0" layoutY="453.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#392805">
+      <Button fx:id="signUpButton" layoutX="214.0" layoutY="453.0" mnemonicParsing="false" onAction="#signupControl" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#392805">
          <font>
             <Font name="0 Nikoo Italic" size="18.0" />
          </font>

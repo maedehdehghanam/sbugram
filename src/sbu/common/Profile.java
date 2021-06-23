@@ -60,6 +60,9 @@ public class Profile implements Serializable {
     public void post(Post thePost){
       posts.add(thePost);
     }
+    public void follow(Profile follow){
+      followings.add(follow);
+    }
     public Profile authenticate(String username,String password){
       if(this.username.equals(username) && this.password.equals(password)) 
         return this;

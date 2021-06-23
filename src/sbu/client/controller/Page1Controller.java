@@ -68,26 +68,18 @@ public class Page1Controller {
             fillFields.setVisible(true);
             return;
         }
-        /*if(! API.doesUserNameExists(usernameCheck))
+        if(! API.doesUserNameExists(usernameCheck))
         {
             notFound.setVisible(true);
-        }*/
-       /* Profile profile = API.login(usernameCheck,passwordCheck);
+            return;
+        }
+        Profile profile = API.login(usernameCheck,passwordCheck);
         if(profile == null){
             //showInvalidLoginDialog();
-            notFound.setVisible(true);
-            return;
-        }*/
-        
-        if(usernameCheck.equals("ali") && passwordCheck.equals("1111")){
-            System.out.println("hey!");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
-            alert.showAndWait();
-            sbu.client.Main.fxmlYarooKone("signup.fxml");
-        }else{
             label.setVisible(true);
+            return;
         }
-        //sbu.client.Main.fxmlYarooKone("timeline.fxml");*/
+        //sbu.client.Main.newFxml("timeline.fxml");*/
     } 
     public void showPass(){
         if(!showpassField.isVisible()){
@@ -100,9 +92,8 @@ public class Page1Controller {
             passField.setText(showpassField.getText());
         }
     }
-    /*public void signupController(ActionEvent event){
-        sbu.client.Main.fxmlYarooKone("signup.fxml");
-        String username = userField.getText();
-        String password =  passField.getText();
-    }*/
+    public void signupControl(ActionEvent event){
+        sbu.client.Main.newfxml("signup.fxml");
+
+    }
 }

@@ -23,6 +23,7 @@ public class Connector{
 		
 		try{
 			System.out.println("server's ip is : " + serverAddress);
+			System.out.println(PORT);
 			socket = new Socket( serverAddress, PORT);
 			socketOut = new ObjectOutputStream( socket.getOutputStream() );
 			if(socketOut != null){
@@ -31,10 +32,10 @@ public class Connector{
 			socketIn = new ObjectInputStream( socket.getInputStream() );
 			isConnected = true;
 			return true;
-		}catch (ConnectException e){
-		}catch (IOException e) {
+		}catch ( IOException e){
+			System.out.println("***************************");
+			e.printStackTrace();
 		}
-		
 		return false;
 	}
 	public static Boolean disconnectFromServer() throws Exception{
@@ -51,6 +52,7 @@ public class Connector{
 			return true;
 		}
 		catch (SocketException | NullPointerException e ){
+			e.printStackTrace();
 		}
 		catch( Exception e){
 			e.printStackTrace();
@@ -71,6 +73,7 @@ public class Connector{
 			return recieved;
 
 		} catch (ClassNotFoundException e){
+			e.printStackTrace();
 		} catch( IOException e){
 			e.printStackTrace();
 		}
