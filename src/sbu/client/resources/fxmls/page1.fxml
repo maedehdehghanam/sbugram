@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #11100E;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.Page1Controller">
    <children>
       <Label fx:id="label" layoutX="103.0" layoutY="415.0" prefHeight="25.0" prefWidth="199.0" text="Password is not correct!" textAlignment="CENTER" textFill="#fc0909" visible="false" />
-      <Button fx:id="loginButton" layoutX="152.0" layoutY="447.0" mnemonicParsing="false" onAction="#loginController" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Login" textFill="#3c2600">
+      <Button fx:id="loginButton" layoutX="100.0" layoutY="453.0" mnemonicParsing="false" onAction="#loginController" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Login" textFill="#3c2600">
          <font>
             <Font name="0 Nikoo Italic" size="18.0" />
          </font></Button>
@@ -20,7 +20,7 @@
       <PasswordField fx:id="passField" layoutX="100.0" layoutY="347.0" prefHeight="38.0" prefWidth="205.0" promptText="Password" style="-fx-background-color: #1791B1;" />
       <ImageView fitHeight="262.0" fitWidth="300.0" layoutX="50.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Screenshot_20210602-234017_Gallery%20(2).jpg" />
+            <Image url="@../../../../../images/appIcon.jpg" />
          </image>
       </ImageView>
       <Button fx:id="forgotPassButton" layoutX="129.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #FF2079;" text="forgot password?" textFill="#1b1505">
@@ -29,5 +29,10 @@
          </font>
       </Button>
       <Label fx:id="fillFields" layoutX="103.0" layoutY="407.0" prefHeight="17.0" prefWidth="199.0" text="PLease fill all the fields" textAlignment="RIGHT" textFill="#fc0707" visible="false" />
+      <Button fx:id="signUpButton" layoutX="214.0" layoutY="453.0" mnemonicParsing="false" onAction="#signupController" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #FF2079;" text="Sign Up" textFill="#392805">
+         <font>
+            <Font name="0 Nikoo Italic" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 public class Connector{
-	public static String serverAddress;
+	public static String serverAddress = "localhost";
 	public static final int PORT = 2727;
 
 	private static boolean isConnected = false;

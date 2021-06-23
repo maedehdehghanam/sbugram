@@ -1,13 +1,24 @@
 package sbu.client.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
+import sbu.common.*;
+import sbu.client.*;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.shape.*;
+import javafx.stage.*;
+
+import java.io.File;
+import java.net.URL;
+import java.util.*;
 public class Page1Controller {
     
     @FXML
     private Label label;
+    @FXML
+    private Button signUpButton;
     @FXML
     private Label fillFields;
     @FXML 
@@ -23,15 +34,37 @@ public class Page1Controller {
         String javafxVersion = System.getProperty("javafx.version");
         //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
     } 
-    //fucking comment
+    public void connectToServer(){
+        try{
+            if ( !Connector.isConnected() ){
+                Connector.connectToServer();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void loginController(ActionEvent event){
+        connectToServer();
+
         label.setVisible(false);
         fillFields.setVisible(false);
+
         String usernameCheck = userField.getText();
         String passwordCheck =  passField.getText();
+
         if(usernameCheck.isEmpty()|| passwordCheck.isEmpty()){
             fillFields.setVisible(true);
+            return;
         }
+        Profile profile = API.login(usernameCheck,passwordCheck);
+        if(profile == null){
+            //showInvalidLoginDialog();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
+        alert.showAndWait();
+        label.setVisible(true);
+        /*
         else if(usernameCheck.equals("ali") && passwordCheck.equals("1111")){
             System.out.println("hey!");
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"WELLCOME!");
@@ -39,7 +72,10 @@ public class Page1Controller {
         }else{
             label.setVisible(true);
         }
-        //sbu.client.Main.fxmlYarooKone("timeline.fxml");
-        //wait(100000);
+        //sbu.client.Main.fxmlYarooKone("timeline.fxml");*/
     } 
+    /*
+    public void signupController(ActionEvent event){
+
+    }*/
 }

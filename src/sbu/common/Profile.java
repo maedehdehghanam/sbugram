@@ -14,8 +14,9 @@ public class Profile implements Serializable {
   private List<Profile> followings;
   private List<Post> posts;
 	public Profile(String userName, String password, 
-		int birthyear,RecoverOptions option ,String passRecover){
+		int birthyear,String name,RecoverOptions option ,String passRecover){
 		this.username =  userName;
+    this.name = name;
 		this.password =  password;
 		this.birthyear =  birthyear;
 		this.option = option;
