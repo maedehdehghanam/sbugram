@@ -38,4 +38,10 @@ public class API{
 		if ( recieved.get("answer") == null ) return false;
 		return (Boolean) recieved.get("answer");
 	}
+	public static void sendPost(Post thePost){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.POST);
+		toSend.put("post",thePost);
+		Connector.serve(toSend);
+	}
 }
