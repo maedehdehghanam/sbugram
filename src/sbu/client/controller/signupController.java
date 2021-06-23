@@ -40,9 +40,11 @@ public class signupController {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
+        //default value
+        cb.setValue("What is your dream job?");
         cb.getItems().add("What is your dream job?");
         cb.getItems().add("When is your mom's birthday?");
-        cb.getItems().add("Wher did you hsve your best vacation?");
+        cb.getItems().add("Where did you have your best vacation?");
         cb.getItems().add("Who was your childhood hero?");
         cb.getItems().add("What was your first teacher's name?");
     } 
@@ -55,6 +57,7 @@ public class signupController {
         String birthyear= birthYear.getText();
         String fullname = fullName.getText();
         String recover = recoverPass.getText();
+        String chosedQ = cb.getValue();
         if( recover.isEmpty() || username.isEmpty() || birthyear.isEmpty()
          || fullname.isEmpty() || password.isEmpty()){
             fillFields.setVisible(true);
@@ -70,9 +73,27 @@ public class signupController {
             ageError.setVisible(true);
             return;
         }
+        RecoverOptions option=null;
+        if(chosedQ.equals("What is your dream job?"))
+        {
+            option=RecoverOptions.DREAM_JOB;
+        }
+        else if(chosedQ.equals("When is your mom's birthday?")){
+            option = RecoverOptions.MOM_BIRTHDAY;
+        }
+        else if(chosedQ.equals("Where did you have your best vacation?")){
+            option = RecoverOptions.BEST_VACATION;
+        }
+        else if(chosedQ.equals("Who was your childhood hero?")){
+            option = RecoverOptions.CHILDHOOD_HERO;
+        }
+        else if(chosedQ.equals("What was your first teacher's name?")){
+            option = RecoverOptions.FIRST_TEACHER;
+        }
 
-        //Profile justCreatedProfile = new Profile(username,password,birth,name,option,recover);
-        //if(API.signUp(justCreatedProfile))
+        Profile justCreatedProfile = new Profile(username,password,birth,fullname,option,recover);
+        if(API.signUp(justCreatedProfile))
+            System.out.println("happy happy me!");
 
         //Command chosen = 
     }
