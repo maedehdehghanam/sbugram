@@ -75,4 +75,12 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
+	public static Boolean editPost(Post post,String newCaption){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("post", post);
+		toSend.put("caption",newCaption);
+		toSend.put("command",Command.EDIT_POST);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (boolean) recieved.get("success");
+	}
 }
