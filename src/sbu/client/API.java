@@ -68,5 +68,11 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
-
+	public static Boolean deletePost(Post post){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("post", post);
+		toSend.put("command",Command.DELETE_POST);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (boolean) recieved.get("success");
+	}
 }
