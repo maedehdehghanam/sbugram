@@ -39,6 +39,9 @@ public class Profile implements Serializable {
     public String toString() {
         return "" + username + ": " + name + "\nbirth year: " + birthyear + "";
     }
+    public RecoverOptions getRecoverOption(){
+      return option;
+    }
     public String getUserName() {
         return username;
     }

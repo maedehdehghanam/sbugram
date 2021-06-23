@@ -92,6 +92,9 @@ public class Page1Controller {
             passField.setText(showpassField.getText());
         }
     }
+    public void forgotpassControl(){
+         sbu.client.Main.newfxml("forgotpass.fxml");
+    }
     public void signupControl(ActionEvent event){
         sbu.client.Main.newfxml("signup.fxml");
 

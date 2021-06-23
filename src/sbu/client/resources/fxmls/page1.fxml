@@ -24,7 +24,7 @@
             <Image url="@../../../../../images/appIcon.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="forgotPassButton" layoutX="140.0" layoutY="507.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #FF2079;" text="forgot password?" textFill="#1b1505">
+      <Button fx:id="forgotPassButton" layoutX="140.0" layoutY="507.0" mnemonicParsing="false" onAction="#forgotpassControl" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #FF2079;" text="forgot password?" textFill="#1b1505">
          <font>
             <Font name="0 Nikoo Italic" size="13.0" />
          </font>

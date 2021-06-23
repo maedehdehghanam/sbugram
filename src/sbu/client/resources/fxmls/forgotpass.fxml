@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #11100E;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ForgotPassController">
+   <children>
+      <ImageView fitHeight="218.0" fitWidth="303.0" layoutX="55.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/appIcon.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="userField" layoutX="99.0" layoutY="277.0" prefHeight="29.0" prefWidth="202.0" promptText="username" style="-fx-background-color: #09FBD3;" />
+      <Button fx:id="recoverButton" layoutX="112.0" layoutY="405.0" mnemonicParsing="false" onAction="#recoverPass" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: #F5D300;" text="RECOVER PASSWORD" />
+      <Label layoutX="145.0" layoutY="448.0" text="username not found!" textFill="#ee1515" visible="false" />
+      <TextField layoutX="99.0" layoutY="319.0" prefHeight="29.0" prefWidth="202.0" style="-fx-background-color: #1791B1;" visible="false" />
+      <TextField fx:id="backupPass" layoutX="99.0" layoutY="355.0" prefHeight="29.0" prefWidth="202.0" promptText="backup password" style="-fx-background-color: #1791B1;" visible="false" />
+   </children>
+</Pane>
