@@ -23,5 +23,14 @@
       <TextField fx:id="setNewPass" layoutX="99.0" layoutY="400.0" prefHeight="29.0" prefWidth="202.0" promptText="set new password" style="-fx-background-color: #9191E9;" visible="false" />
       <Label fx:id="passIsWrong" layoutX="130.0" layoutY="376.0" text="backup password is wrong!" textFill="#eb0101" visible="false" />
       <Button fx:id="ok" layoutX="168.0" layoutY="490.0" mnemonicParsing="false" onAction="#checkPass" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #F5D300;" text="OK" />
+      <Button fx:id="back" layoutX="3.0" layoutY="533.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="62.0" prefWidth="63.0" style="-fx-background-color: #11100E;">
+         <graphic>
+            <ImageView fitHeight="47.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/arrow.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </Pane>

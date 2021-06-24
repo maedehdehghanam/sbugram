@@ -31,6 +31,8 @@ public class ForgotPassController {
     private Label passIsWrong;
     @FXML
     private Label passSet;
+    @FXML
+    private Button back;
     private Profile forgotenPassProfile = null;
     private String backupKEY;
     private String question = null;
@@ -95,6 +97,9 @@ public class ForgotPassController {
         } else{
         	passIsWrong.setVisible(true);
         }
+    }
+    public void backToLogin(ActionEvent event){
+         sbu.client.Main.newfxml("page1.fxml");
     }
 
 }

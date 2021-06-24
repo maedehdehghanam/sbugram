@@ -36,6 +36,8 @@ public class signupController {
     private TextField fullName;
     @FXML
     private ChoiceBox<String> cb = new ChoiceBox<>();
+    @FXML
+    private Button back;
     public void connectToServer(){
         try{
             if ( !Connector.isConnected() ){
@@ -106,6 +108,8 @@ public class signupController {
             System.out.println("happy happy me!");
 
     }
-
+    public void backToLogin(ActionEvent event){
+         sbu.client.Main.newfxml("page1.fxml");
+    }
     
 }

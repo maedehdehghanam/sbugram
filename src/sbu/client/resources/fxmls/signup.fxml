@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -30,5 +32,14 @@
       </Text>
       <TextField fx:id="fullName" layoutX="84.0" layoutY="254.0" prefHeight="35.0" prefWidth="217.0" promptText="full name" style="-fx-background-color: #1791B1;" />
       <ChoiceBox fx:id="cb" layoutX="85.0" layoutY="399.0" prefHeight="23.0" prefWidth="217.0" style="-fx-background-color: #9F81CD;" />
+      <Button fx:id="back" layoutX="4.0" layoutY="549.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="47.0" prefWidth="58.0" style="-fx-background-color: #11100E;">
+         <graphic>
+            <ImageView fitHeight="75.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/arrow.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </Pane>
