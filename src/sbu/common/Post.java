@@ -14,11 +14,13 @@ public class Post implements Serializable , Comparable{
 	private List<Comment> comments;
 	private boolean deleted = false;
 	private final Profile poster;
+	private String title;
 	
-	public Post(Object postingPicture, String caption, Profile poster){
+	public Post(Object postingPicture, String caption, Profile poster, String title){
 		this.postingPicture = postingPicture;
 		this.caption = caption;
 		this.poster = poster;
+		this.title =  title;
 		comments = new Vector<>();
 		numberOfLikes = 0;
 		likedPeople = new Vector<>();
@@ -49,6 +51,9 @@ public class Post implements Serializable , Comparable{
     }
     public long getNumberOfLikes(){
     	return numberOfLikes;
+    }
+    public String getTitle(){
+    	return title;
     }
     public List<Profile> getLikedPeople(){
     	return likedPeople;

@@ -1,5 +1,5 @@
 package sbu.client;
-
+import sbu.common.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +10,7 @@ import java.io.File;
 
 public class Main extends Application {
 
+    public static Profile currentUser = null;
     public static Stage fStage=null;
     @Override
     public void start(Stage stage) throws Exception {
@@ -31,6 +32,7 @@ public class Main extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+
     }
 
 }

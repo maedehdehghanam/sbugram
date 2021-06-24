@@ -37,6 +37,10 @@ public class Page1Controller {
     private CheckBox showpassCheck;
     @FXML
     private TextField showpassField;
+    public Profile profile = null;
+    public Profile getControlProfile(){
+        return profile;
+    }
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -75,11 +79,13 @@ public class Page1Controller {
             notFound.setVisible(true);
             return;
         }
-        Profile profile = API.login(usernameCheck,passwordCheck);
+        profile = API.login(usernameCheck,passwordCheck);
         if(profile == null){
             //showInvalidLoginDialog();
             label.setVisible(true);
             return;
+        } else{
+            sbu.client.Main.newfxml("timeline.fxml");
         }
         //sbu.client.Main.newFxml("timeline.fxml");*/
     } 
