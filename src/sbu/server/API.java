@@ -100,6 +100,15 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
+	public static Map<String,Object> forgotpass(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.FORGOT_PASS);
+		String username = (String) income.get("username");
+		Profile profile = Server.profiles.get(username);
+		ans.put("profile",profile);
+		ans.put("success", new Boolean(true));
+		return ans;
+	}
 	public static Map<String,Object> comment(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.COMMENT);
@@ -108,6 +117,23 @@ public class API{
 		thePost.addComment(theComment);
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));
+		return ans;
+	}
+	public static Map<String,Object> updateProfile(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.UPDATE_PROFILE);
+		String changing = (String) income.get("change");
+		Profile person = Server.profiles.get((String) income.get("username"));
+		if(changing.equals("username")){
+			person.setUsername((String) income.get("changeable"));
+		}
+		else if(changing.equals("password")){
+			person.setNewPassword((String) income.get("changeable"));
+		}
+		else if(changing.equals("name")){
+			person.setName((String) income.get("changeable"));
+		}
+		DBManager.getInstance().updateDataBase();
 		return ans;
 	}
 	public static  Map<String,Object> deletePost(Map<String,Object> income){

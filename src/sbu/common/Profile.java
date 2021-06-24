@@ -4,11 +4,12 @@ import java.io.*;
 import java.util.*;
 
 public class Profile implements Serializable {
+  //private static final long serialVersionUID = 8452845068004156728L;
 	private String username;
 	private String name;
 	private String password;
-	private int birthyear;
-	private RecoverOptions option;
+	private final int birthyear;
+	private final RecoverOptions option;
 	private final String passRecover;
 	private List<Profile> follwers;
   private List<Profile> followings;
@@ -42,6 +43,9 @@ public class Profile implements Serializable {
     public RecoverOptions getRecoverOption(){
       return option;
     }
+    public String getPassRecover(){
+      return passRecover;
+    }
     public String getUserName() {
         return username;
     }
@@ -57,6 +61,9 @@ public class Profile implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    public void setUsername(String username){
+      this.username = username;
+        }
     public int getBirthyear(){
       return (birthyear);
     }

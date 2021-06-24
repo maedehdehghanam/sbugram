@@ -30,6 +30,8 @@ public class Page1Controller {
     @FXML
     private Button forgotPassButton;
     @FXML
+    private Button ok;
+    @FXML
     private Label notFound;
     @FXML
     private CheckBox showpassCheck;

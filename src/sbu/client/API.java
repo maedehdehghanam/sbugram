@@ -38,11 +38,30 @@ public class API{
 		if ( recieved.get("success") == null ) return false;
 		return (Boolean) recieved.get("success");
 	}
+	public static Profile forgotpass(String username){
+		/*Map<String,Object> toSend = new HashMap<>();
+		toSend.put("username",username);
+		toSend.put("command", Command.FORGOT_PASS);*/
+		Map<String,Object> recieved = Connector.serve(Map.of("username",username,"command", Command.FORGOT_PASS));
+		return (Profile) recieved.get("profile");
+	}
 	public static void sendPost(Post thePost){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.POST);
 		toSend.put("post",thePost);
 		Connector.serve(toSend);
+	}
+	public static void updateProfile(String userName, String password,String name ,String change,Object changeable)
+	{
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.UPDATE_PROFILE);
+		toSend.put("username",userName);
+		toSend.put("password",password);
+		toSend.put("name", name);
+		toSend.put("change",change);
+		toSend.put("changeable",changeable);
+		Connector.serve(toSend);
+
 	}
 	public static Boolean like(Post post,Profile profile){
 		Map<String,Object> toSend = new HashMap<>();

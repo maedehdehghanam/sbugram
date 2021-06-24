@@ -23,6 +23,17 @@ public class ForgotPassController {
     private Label notFound;
     @FXML
     private TextField backupPass;
+    @FXML
+    private TextField backupKey;
+    @FXML
+    private TextField setNewPass;
+    @FXML
+    private Label passIsWrong;
+    @FXML
+    private Label passSet;
+    private Profile forgotenPassProfile = null;
+    private String backupKEY;
+    private String question = null;
 	public void initialize() {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -30,15 +41,15 @@ public class ForgotPassController {
     } 
     public void recoverPass(ActionEvent event){
     	notFound.setVisible(false);
+    	passIsWrong.setVisible(false);
     	String usernameCheck = userField.getText();
     	if(! sbu.client.API.doesUserNameExists(usernameCheck) )
         {
             notFound.setVisible(true);
             return;
         }
-        RecoverOptions option =  RecoverOptions.DREAM_JOB;
-        // sbu.server.Server.profiles.get(usernameCheck).getRecoverOption();
-        String question = null;
+        forgotenPassProfile = sbu.client.API.forgotpass(usernameCheck);
+        RecoverOptions option = forgotenPassProfile.getRecoverOption();
         switch(option){
         	case DREAM_JOB :
         		question = "what is your dream job?";
@@ -58,7 +69,22 @@ public class ForgotPassController {
         }
         backupPass.setVisible(true);
         backupPass.setText(question);
+        backupKey.setVisible(true);
+        setNewPass.setVisible(true);
+        //ok.setVisible(true);
+        
+        
 
+    }
+    public void checkPass(ActionEvent event){
+
+    	if(backupKey.getText().equals(forgotenPassProfile.getPassRecover())){
+        	sbu.client.API.updateProfile(forgotenPassProfile.getUserName(),forgotenPassProfile.getPassword(),
+                forgotenPassProfile.getName(),"password",setNewPass.getText());
+
+        } else{
+        	passIsWrong.setVisible(true);
+        }
     }
 
 }

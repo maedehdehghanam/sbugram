@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #11100E;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ForgotPassController">
    <children>
       <ImageView fitHeight="218.0" fitWidth="303.0" layoutX="55.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
@@ -15,10 +14,14 @@
             <Image url="@../../../../../images/appIcon.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="userField" layoutX="99.0" layoutY="277.0" prefHeight="29.0" prefWidth="202.0" promptText="username" style="-fx-background-color: #09FBD3;" />
-      <Button fx:id="recoverButton" layoutX="112.0" layoutY="405.0" mnemonicParsing="false" onAction="#recoverPass" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: #F5D300;" text="RECOVER PASSWORD" />
-      <Label layoutX="145.0" layoutY="448.0" text="username not found!" textFill="#ee1515" visible="false" />
+      <TextField fx:id="userField" layoutX="99.0" layoutY="255.0" prefHeight="29.0" prefWidth="202.0" promptText="username" style="-fx-background-color: #09FBD3;" />
+      <Button fx:id="recoverButton" layoutX="113.0" layoutY="450.0" mnemonicParsing="false" onAction="#recoverPass" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: #F5D300;" text="RECOVER PASSWORD" />
+      <Label fx:id="notFound" layoutX="144.0" layoutY="284.0" text="username not found!" textFill="#ee1515" visible="false" />
       <TextField layoutX="99.0" layoutY="319.0" prefHeight="29.0" prefWidth="202.0" style="-fx-background-color: #1791B1;" visible="false" />
-      <TextField fx:id="backupPass" layoutX="99.0" layoutY="355.0" prefHeight="29.0" prefWidth="202.0" promptText="backup password" style="-fx-background-color: #1791B1;" visible="false" />
+      <TextField fx:id="backupPass" layoutX="100.0" layoutY="305.0" prefHeight="29.0" prefWidth="202.0" promptText="backup password" style="-fx-background-color: #1791B1;" visible="false" />
+      <TextField fx:id="backupKey" layoutX="100.0" layoutY="341.0" prefHeight="29.0" prefWidth="202.0" promptText="backup pass" style="-fx-background-color: #1791B1;" visible="false" />
+      <TextField fx:id="setNewPass" layoutX="99.0" layoutY="400.0" prefHeight="29.0" prefWidth="202.0" promptText="set new password" style="-fx-background-color: #9191E9;" visible="false" />
+      <Label fx:id="passIsWrong" layoutX="130.0" layoutY="376.0" text="backup password is wrong!" textFill="#eb0101" visible="false" />
+      <Button fx:id="ok" layoutX="168.0" layoutY="490.0" mnemonicParsing="false" onAction="#checkPass" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #F5D300;" text="OK" />
    </children>
 </Pane>

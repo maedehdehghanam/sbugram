@@ -54,6 +54,9 @@ public class ClientHandler implements Runnable{
 					case UNLIKE :
 						answer = API.unlike(income);
 						break;
+					case FORGOT_PASS:
+						answer = API.forgotpass(income);
+						break;
 					case COMMENT :
 						answer = API.comment(income);
 						break;
@@ -63,9 +66,12 @@ public class ClientHandler implements Runnable{
 					case EDIT_POST:
 						answer = API.editPost(income);
 						break;
+					case UPDATE_PROFILE:
+						answer = API.updateProfile(income);
+						break;
  				}
 				socketOut.writeObject(answer);
-				//socketOut.flush();
+				socketOut.flush();
 			}catch(Exception e){
 				e.printStackTrace();
 			}

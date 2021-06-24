@@ -17,8 +17,7 @@ public class Connector{
 		return isConnected;
 	}
 	public static Boolean connectToServer() throws Exception{
-		if(socket != null){
-			System.out.println("***************************"); 
+		if(socket != null){ 
 			return false;}
 		
 		try{
@@ -26,14 +25,10 @@ public class Connector{
 			System.out.println(PORT);
 			socket = new Socket( serverAddress, PORT);
 			socketOut = new ObjectOutputStream( socket.getOutputStream() );
-			if(socketOut != null){
-				System.out.println("***************************");
-			}
 			socketIn = new ObjectInputStream( socket.getInputStream() );
 			isConnected = true;
 			return true;
 		}catch ( IOException e){
-			System.out.println("***************************");
 			e.printStackTrace();
 		}
 		return false;

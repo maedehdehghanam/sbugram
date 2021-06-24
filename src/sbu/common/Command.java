@@ -1,7 +1,7 @@
 package sbu.common;
 import java.io.*;
 import java.util.*;
-public enum Command implements Serializable{
+public enum Command {
 	CHECK_USERNAME,
 	LOGIN,
 	SIGNUP,
@@ -10,6 +10,7 @@ public enum Command implements Serializable{
 	LIKE,
 	UNLIKE,
 	FOLLOW,
+	FORGOT_PASS,
 	EDIT_POST,
 	DELETE_POST,
 	COMMENT,
