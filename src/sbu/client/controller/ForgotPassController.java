@@ -39,7 +39,17 @@ public class ForgotPassController {
         String javafxVersion = System.getProperty("javafx.version");
         //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
     } 
+    public void connectToServer(){
+        try{
+            if ( !Connector.isConnected() ){
+                Connector.connectToServer();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void recoverPass(ActionEvent event){
+        connectToServer();
     	notFound.setVisible(false);
     	passIsWrong.setVisible(false);
     	String usernameCheck = userField.getText();

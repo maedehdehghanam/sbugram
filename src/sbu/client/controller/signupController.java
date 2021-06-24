@@ -36,7 +36,17 @@ public class signupController {
     private TextField fullName;
     @FXML
     private ChoiceBox<String> cb = new ChoiceBox<>();
+    public void connectToServer(){
+        try{
+            if ( !Connector.isConnected() ){
+                Connector.connectToServer();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void initialize() {
+        connectToServer();
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
@@ -95,7 +105,6 @@ public class signupController {
         if(API.signUp(justCreatedProfile))
             System.out.println("happy happy me!");
 
-        //Command chosen = 
     }
 
     
