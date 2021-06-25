@@ -100,6 +100,7 @@ public class TimelineController{
     	title.setText("");
     	caption.setText("");
     	publish.setVisible(true);
+
     }
     //publishin a new post
     public void hey(ActionEvent event){
@@ -111,9 +112,11 @@ public class TimelineController{
     	postList.getItems().add(currentPost.toString());
     	title.setText("");
     	caption.setText("");
+    	posted = user.getAllPosts();
     }
     //showing a selcted post from timeline
     public void showPost(MouseEvent event){
+    	posted = user.getAllPosts();
     	setButtonSelectedPost();
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
@@ -153,10 +156,12 @@ public class TimelineController{
     		unlike.setVisible(true);
     	}
     	System.out.println(Main.mainPost.getLikedPeople().size());
+    	posted = user.getAllPosts();
     }
     public void commentForThePost(ActionEvent e){
+    	posted = user.getAllPosts();
     	setButtonSelectedPost();
-    	commentList.getSelectionModel().clearSelection();
+    	commentList.getItems().clear();
     	commentList.setVisible(true);
     	likeList.setVisible(false);
     	postList.setVisible(false);
@@ -180,11 +185,13 @@ public class TimelineController{
     		repost.setVisible(true);
     		unrepost.setVisible(false);
     	}
+    	posted = user.getAllPosts();
     }
     //showing timeline
     public void showTimeLine(ActionEvent e){
+    	posted = user.getAllPosts();
     	setButtonNewPost();
-    	postList.getItems().clear();;
+    	postList.getItems().clear();
     	for (Post p : posted ) {
     		postList.getItems().add(p.toString());
     	}
@@ -200,8 +207,9 @@ public class TimelineController{
     }
     //showing who has liked the post
     public void showPostLike(MouseEvent event){
+    	posted = user.getAllPosts();
     	setButtonSelectedPost();
-    	likeList.getSelectionModel().clearSelection();
+    	likeList.getItems().clear();
     	commentList.setVisible(false);
     	likeList.setVisible(true);
     	postList.setVisible(false);

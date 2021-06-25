@@ -105,12 +105,27 @@ public class API{
 		Post thePost = (Post) income.get("post");
 		Profile liker = (Profile) income.get("profile");
 		if(thePost.getLikedPeople().contains(liker)){
-			int index = Server.profiles.get(thePost.getPoster()).getPosts().indexOf(thePost);
-			Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().remove(liker);
-			//thePost.unlikePost(liker);
+			List<Post> check = Server.profiles.get(thePost.getPoster().getUserName()).getPosts();
+			for (Post p : check ) {
+				if(p.getTitle().equals(thePost.getTitle()) && 
+					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
+				{
+					System.out.println("fuck this");
+					p.getLikedPeople().remove(liker);
+				}
+			}
+			
 		}else {
-			int index = Server.profiles.get(thePost.getPoster()).getPosts().indexOf(thePost);
-			Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().add(liker);
+			List<Post> check = Server.profiles.get(thePost.getPoster().getUserName()).getPosts();
+			for (Post p : check ) {
+				if(p.getTitle().equals(thePost.getTitle()) && 
+					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
+				{
+					System.out.println("fuck this");
+					p.getLikedPeople().add(liker);
+				}
+			}
+			//Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().add(liker);
 			//thePost.likePost(liker);
 		}
 		DBManager.getInstance().updateDataBase();

@@ -3,7 +3,8 @@ import java.io.*;
 import java.util.*;
 import java.time.*;
 import java.util.concurrent.*;
-public class Post implements Serializable , Comparable{
+public class Post implements Serializable {
+//, Comparable{
 
 	private final long createdTime;
 	private final String timeString;
@@ -41,7 +42,7 @@ public class Post implements Serializable , Comparable{
   	public void deletePost(){
   		deleted = true;
   	}
-  	@Override
+  	/*@Override
   	public int compareTo(Object o) {
     	if (o instanceof Post == false) 
     		return -1;
@@ -50,7 +51,7 @@ public class Post implements Serializable , Comparable{
     		return 1;
     	//return createdTime.compareTo( other.createdTime );
     	return 0;
-    }
+    }*/
     public long getNumberOfLikes(){
     	return numberOfLikes;
     }
