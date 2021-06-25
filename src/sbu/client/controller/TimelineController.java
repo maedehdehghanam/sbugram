@@ -56,13 +56,6 @@ public class TimelineController{
 	private Button comment;
 	@FXML
 	private Button timelineposts;
-	@FXML
-	/*private Text likenumber;
-	@FXML
-	private Text commentnumber;
-	@FXML
-	private Text repostnumbers;*/
-
 	private Profile user = Main.currentUser; 
 	private ArrayList<Post> posted = user.getAllPosts();
 	private Post currentPost = null;
@@ -73,6 +66,13 @@ public class TimelineController{
         for (Post p : posted ) {
     		postList.getItems().add(p.toString());
     	}
+    	like.setVisible(false);
+    	comment.setVisible(false);
+    	repost.setVisible(false);
+    	unlike.setVisible(false);
+    	unrepost.setVisible(false);
+    	commentfield.setVisible(false);
+    	publish.setVisible(true);
     }
     //button settings for selecting type of posts
     public void setButtonSelectedPost(){
@@ -143,18 +143,31 @@ public class TimelineController{
     public void likeThePost(ActionEvent e){
     	if((Main.mainPost.getLikedPeople()).contains(Main.currentUser)){
     		boolean y = API.like(Main.mainPost,Main.currentUser);
-    		unlike.setVisible(true);
-    		like.setVisible(false);
+    		//Main.mainPost.getLikedPeople().remove(Main.currentUser);
+    		unlike.setVisible(false);
+    		like.setVisible(true);
     	}else{
     		boolean x = API.like(Main.mainPost,Main.currentUser);
-    		like.setVisible(true);
-    		unlike.setVisible(false);
+    		//Main.mainPost.getLikedPeople().add(Main.currentUser);
+    		like.setVisible(false);
+    		unlike.setVisible(true);
     	}
+    	System.out.println(Main.mainPost.getLikedPeople().size());
     }
     public void commentForThePost(ActionEvent e){
-    	Comment c = new Comment(Main.currentUser,Main.mainPost.getPoster(),commentfield.getText());
-    	boolean x = API.comment(Main.mainPost,c);
-    	commentList.getItems().add(c.toString());
+    	setButtonSelectedPost();
+    	commentList.getSelectionModel().clearSelection();
+    	commentList.setVisible(true);
+    	likeList.setVisible(false);
+    	postList.setVisible(false);
+    	for (Comment p : Main.mainPost.getComments() ) {
+    		commentList.getItems().add(p.toString());
+    	}
+    	if((!commentfield.getText().equals("")) || commentfield.getText()==null){
+	    	Comment c = new Comment(Main.currentUser,Main.mainPost.getPoster(),commentfield.getText());
+	    	boolean x = API.comment(Main.mainPost,c);
+	    	commentList.getItems().add(c.toString());
+    	}
     	commentfield.setText("");
     }
     public void repostThePost(ActionEvent e){
@@ -171,6 +184,10 @@ public class TimelineController{
     //showing timeline
     public void showTimeLine(ActionEvent e){
     	setButtonNewPost();
+    	postList.getItems().clear();;
+    	for (Post p : posted ) {
+    		postList.getItems().add(p.toString());
+    	}
     	commentList.setVisible(false);
     	likeList.setVisible(false);
     	postList.setVisible(true);
@@ -182,8 +199,9 @@ public class TimelineController{
     	postList.setVisible(true);
     }
     //showing who has liked the post
-    public void showPostLike(ActionEvent e){
+    public void showPostLike(MouseEvent event){
     	setButtonSelectedPost();
+    	likeList.getSelectionModel().clearSelection();
     	commentList.setVisible(false);
     	likeList.setVisible(true);
     	postList.setVisible(false);
@@ -192,7 +210,7 @@ public class TimelineController{
     	}
     }
     // showing commentsunder the post
-    public void showPostComments(ActionEvent e){
+    /*public void showPostComments(ActionEvent e){
     	setButtonSelectedPost();
     	commentList.setVisible(true);
     	likeList.setVisible(false);
@@ -200,7 +218,7 @@ public class TimelineController{
     	for (Comment p : Main.mainPost.getComments() ) {
     		commentList.getItems().add(p.toString());
     	}
-    }
+    }*/
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();

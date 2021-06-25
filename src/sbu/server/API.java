@@ -61,6 +61,8 @@ public class API{
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LOGOUT);
 		ans.put("success",new Boolean(true));
+
+		DBManager.getInstance().updateDataBase();
 		return ans;
 	}
 	public static Map<String,Object> post(Map<String,Object> income){
@@ -103,9 +105,13 @@ public class API{
 		Post thePost = (Post) income.get("post");
 		Profile liker = (Profile) income.get("profile");
 		if(thePost.getLikedPeople().contains(liker)){
-			thePost.unlikePost(liker);
+			int index = Server.profiles.get(thePost.getPoster()).getPosts().indexOf(thePost);
+			Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().remove(liker);
+			//thePost.unlikePost(liker);
 		}else {
-			thePost.likePost(liker);
+			int index = Server.profiles.get(thePost.getPoster()).getPosts().indexOf(thePost);
+			Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().add(liker);
+			//thePost.likePost(liker);
 		}
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));

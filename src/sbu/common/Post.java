@@ -36,7 +36,7 @@ public class Post implements Serializable , Comparable{
     }*/
     @Override
   	public String toString(){
-  		return "@"+poster.getUserName() + "\t\t"+ title + "\n" + "likes = " + numberOfLikes+"\t"+timeString;
+  		return "@"+poster.getUserName() + "\t\t"+ title + "\n" + "likes = " + likedPeople.size()+"\t"+timeString;
   	}
   	public void deletePost(){
   		deleted = true;
