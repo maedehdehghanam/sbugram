@@ -11,7 +11,7 @@ public class Server{
 	public static final int PORT = 2727;
 	private static boolean isServerUp = true;
 	public static Map<String, Profile> profiles = null;
-	public static Set<Post> posts = null;
+	//public static Set<Post> posts = null;
 	public static boolean isServerUp(){
 		return isServerUp;
 	}

@@ -11,9 +11,10 @@ public class Profile implements Serializable {
 	private final int birthyear;
 	private final RecoverOptions option;
 	private final String passRecover;
-	private List<Profile> follwers;
-  private List<Profile> followings;
-  private List<Post> posts;
+	private ArrayList<Profile> follwers = new ArrayList<>();
+  private ArrayList<Profile> followings = new ArrayList<>();
+  private ArrayList<Post> posts = new ArrayList<>();
+  private ArrayList<Post> allPosts;
 	public Profile(String userName, String password, 
 		int birthyear,String name,RecoverOptions option ,String passRecover){
 		this.username =  userName;
@@ -55,6 +56,14 @@ public class Profile implements Serializable {
     public String getPassword() {
         return password;
     }
+    public ArrayList<Post> getAllPosts(){
+      allPosts = new ArrayList<>();
+      for (int i=0;i<followings.size();++i ) {
+        allPosts.addAll(followings.get(i).getPosts());
+      }
+      allPosts.addAll(posts);
+      return allPosts;
+    }
     public void setNewPassword(String newPassword){
     	this.password = newPassword;
     }
@@ -67,8 +76,14 @@ public class Profile implements Serializable {
     public int getBirthyear(){
       return (birthyear);
     }
+    public ArrayList<Post> getPosts(){
+      return posts;
+    }
     public void post(Post thePost){
       posts.add(thePost);
+    }
+    public void deletePost(Post post){
+      posts.remove(post);
     }
     public void follow(Profile follow){
       followings.add(follow);

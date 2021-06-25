@@ -13,19 +13,21 @@ public class Post implements Serializable , Comparable{
 	private String caption;
 	private List<Comment> comments;
 	private boolean deleted = false;
-	private final Profile poster;
+	private Profile poster;
 	private String title;
-	
-	public Post(Object postingPicture, String caption, Profile poster, String title){
-		this.postingPicture = postingPicture;
-		this.caption = caption;
-		this.poster = poster;
-		this.title =  title;
+	public Post(){
 		comments = new Vector<>();
 		numberOfLikes = 0;
 		likedPeople = new Vector<>();
 		createdTime = Time.getMilli();
     	timeString = Time.getTime();
+	}
+	public Post(Object postingPicture, String caption, Profile poster, String title){
+		this();
+		this.postingPicture = postingPicture;
+		this.caption = caption;
+		this.poster = poster;
+		this.title =  title;
 	}
 
 	/*@Override
@@ -34,7 +36,7 @@ public class Post implements Serializable , Comparable{
     }*/
     @Override
   	public String toString(){
-  		return poster.getUserName() + caption + "\n" + "likes = " + numberOfLikes;
+  		return "@"+poster.getUserName() + "\t\t"+ title + "\n" + "likes = " + numberOfLikes+"\t"+timeString;
   	}
   	public void deletePost(){
   		deleted = true;
@@ -54,6 +56,17 @@ public class Post implements Serializable , Comparable{
     }
     public String getTitle(){
     	return title;
+    }
+    public void setTitle(String str){
+    	title = str;
+    }
+    public String getCaption(){
+    	return caption;
+    }
+    public boolean equals(Post other){
+    	if(this.title.equals(other.getTitle()))
+    		return true;
+    	return false;
     }
     public List<Profile> getLikedPeople(){
     	return likedPeople;

@@ -8,8 +8,8 @@ import java.util.concurrent.*;
 public class DBManager{
 
 	private static DBManager theDBManager = new DBManager();
-	private static final String profilesPath = "DataBase/ProfilesDB.bin";
-	private static final String postsPath = "DataBase/PostsDB.bin";
+	private static final String profilesPath = "DataBase/ProfilesDB";
+	private static final String postsPath = "DataBase/PostsDB";
 
 	private DBManager(){};
 	public static DBManager getInstance(){
@@ -27,7 +27,7 @@ public class DBManager{
             }catch (Exception e){
     			e.printStackTrace();
   			}
-  			try {
+  			/*try {
 			    FileInputStream fin = new FileInputStream(DBManager.postsPath);
 			    ObjectInputStream inFromFile = new ObjectInputStream(fin);
 			    Server.posts = new ConcurrentSkipListSet<>( (ConcurrentSkipListSet<Post>) inFromFile.readObject());
@@ -38,21 +38,24 @@ public class DBManager{
 			    Server.posts = new ConcurrentSkipListSet<>();
 			  }catch (Exception e){
 			    e.printStackTrace();
-			  }
+			  }*/
 	}
 	public synchronized void updateDataBase(){
 		  try {
+		  		System.out.println(Server.profiles.get("a").getAllPosts().size());
 			      FileOutputStream fout = new FileOutputStream(profilesPath);
 			      ObjectOutputStream objToFile = new ObjectOutputStream(fout);
 			      objToFile.writeObject(Server.profiles); //writing profiles
 			      objToFile.close();
 			      fout.close();
-
-			      fout = new FileOutputStream(postsPath);
+			      //for (int i =0 ;i<Server.profiles.size() ;++i ) {
+			      	//System.out.println(Server.profiles.get("a").getPosts().size());
+			      //}
+			      /*fout = new FileOutputStream(postsPath);
 			      objToFile = new ObjectOutputStream(fout);
 			      objToFile.writeObject(Server.posts); // writing mails
 			      objToFile.close();
-			      fout.close();
+			      fout.close();*/
 			  } catch (IOException e) {
 			    e.printStackTrace();
 			  }

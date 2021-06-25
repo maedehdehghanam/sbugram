@@ -106,6 +106,8 @@ public class signupController {
         Profile justCreatedProfile = new Profile(username,password,birth,fullname,option,recover);
         if(API.signUp(justCreatedProfile))
             System.out.println("happy happy me!");
+        if(Main.currentUser == null)
+            Main.currentUser = justCreatedProfile;
 
     }
     public void backToLogin(ActionEvent event){

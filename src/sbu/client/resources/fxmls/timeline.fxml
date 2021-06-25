@@ -7,17 +7,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.5836120401337793" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.TimelineController">
+<SplitPane dividerPositions="0.44481605351170567" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.TimelineController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="398.0">
          <children>
-            <TextField fx:id="title" layoutX="14.0" layoutY="22.0" />
-            <TextArea fx:id="caption" layoutX="14.0" layoutY="53.0" prefHeight="158.0" prefWidth="149.0" />
-            <Button fx:id="publish" layoutX="214.0" layoutY="35.0" mnemonicParsing="false" onAction="#hey" text="Button" />
+            <TextField fx:id="title" layoutX="14.0" layoutY="119.0" promptText="Title" />
+            <TextArea fx:id="caption" layoutX="14.0" layoutY="155.0" prefHeight="90.0" prefWidth="149.0" promptText="Caption" />
+            <Button fx:id="publish" layoutX="124.0" layoutY="86.0" mnemonicParsing="false" onAction="#hey" text="Post" />
+            <Button layoutX="317.0" layoutY="224.0" mnemonicParsing="false" onAction="#newPost" text="New Post" />
+            <Button fx:id="logout" layoutX="325.0" layoutY="181.0" mnemonicParsing="false" onAction="#logout" text="Button" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="398.0">
          <children>
-            <ListView fx:id="postList" prefHeight="398.0" prefWidth="398.0" />
+            <ListView fx:id="postList" onMouseClicked="#showPost" prefHeight="398.0" prefWidth="398.0" />
          </children></AnchorPane>
   </items>
 </SplitPane>

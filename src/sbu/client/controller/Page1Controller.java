@@ -37,10 +37,7 @@ public class Page1Controller {
     private CheckBox showpassCheck;
     @FXML
     private TextField showpassField;
-    public Profile profile = null;
-    public Profile getControlProfile(){
-        return profile;
-    }
+    public Profile profile ;
     public void initialize() {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -85,9 +82,10 @@ public class Page1Controller {
             label.setVisible(true);
             return;
         } else{
+            Main.currentUser = API.login(usernameCheck,passwordCheck); 
             sbu.client.Main.newfxml("timeline.fxml");
         }
-        //sbu.client.Main.newFxml("timeline.fxml");*/
+        
     } 
     public void showPass(){
         if(!showpassField.isVisible()){

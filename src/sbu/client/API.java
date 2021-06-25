@@ -49,6 +49,7 @@ public class API{
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.POST);
 		toSend.put("post",thePost);
+		toSend.put("poster",thePost.getPoster());
 		Connector.serve(toSend);
 	}
 	public static void updateProfile(String userName, String password,String name ,String change,Object changeable)
