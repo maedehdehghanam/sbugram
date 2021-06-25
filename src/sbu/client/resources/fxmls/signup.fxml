@@ -41,5 +41,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="successed" layoutX="132.0" layoutY="492.0" prefHeight="17.0" prefWidth="199.0" text="Signed up successfully!" textFill="#38f811" />
    </children>
 </Pane>

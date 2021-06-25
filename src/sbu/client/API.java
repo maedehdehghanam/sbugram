@@ -52,6 +52,13 @@ public class API{
 		toSend.put("poster",thePost.getPoster());
 		Connector.serve(toSend);
 	}
+	public static void repost(Post thePost,Profile profile){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.REPOST);
+		toSend.put("post",thePost);
+		toSend.put("reposter",profile);
+		Connector.serve(toSend);
+	}
 	public static void updateProfile(String userName, String password,String name ,String change,Object changeable)
 	{
 		Map<String,Object> toSend = new HashMap<>();
@@ -72,14 +79,14 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
-	public static Boolean unlike(Post post,Profile profile){
+	/*public static Boolean unlike(Post post,Profile profile){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("profile",profile);
 		toSend.put("post", post);
 		toSend.put("command", Command.UNLIKE);
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
-	}
+	}*/
 	public static Boolean comment(Post post,Comment cm){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("comment",cm);

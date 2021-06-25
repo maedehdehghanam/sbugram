@@ -83,17 +83,35 @@ public class API{
 		}
 		return ans;
 	}
+	public static Map<String,Object> repost(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.REPOST);
+		Post posting = (Post) income.get("post");
+		Profile reposter = (Profile) income.get("reposter");
+		if(reposter.getPosts().contains(posting)){
+			Server.profiles.get(reposter.getUserName()).getPosts().remove(posting);
+		} else{
+			Server.profiles.get(reposter.getUserName()).getPosts().add(posting);
+		}
+		DBManager.getInstance().updateDataBase();
+		ans.put("success", new Boolean(true));
+		return ans;
+	}
 	public static Map<String,Object> like(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LIKE);
 		Post thePost = (Post) income.get("post");
 		Profile liker = (Profile) income.get("profile");
-		thePost.likePost(liker);
+		if(thePost.getLikedPeople().contains(liker)){
+			thePost.unlikePost(liker);
+		}else {
+			thePost.likePost(liker);
+		}
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
-	public static Map<String,Object> unlike(Map<String,Object> income){
+	/*public static Map<String,Object> unlike(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.UNLIKE);
 		Post thePost = (Post) income.get("post");
@@ -102,7 +120,7 @@ public class API{
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));
 		return ans;
-	}
+	}*/
 	public static Map<String,Object> forgotpass(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.FORGOT_PASS);
@@ -122,6 +140,7 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
+
 	public static Map<String,Object> updateProfile(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.UPDATE_PROFILE);

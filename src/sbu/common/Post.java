@@ -71,6 +71,9 @@ public class Post implements Serializable , Comparable{
     public List<Profile> getLikedPeople(){
     	return likedPeople;
     }
+    public List<Comment> getComments(){
+    	return comments;
+    }
     public synchronized void likePost(Profile account){
     	likedPeople.add(account);
     	numberOfLikes++;

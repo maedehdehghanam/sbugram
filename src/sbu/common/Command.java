@@ -14,5 +14,6 @@ public enum Command {
 	EDIT_POST,
 	DELETE_POST,
 	COMMENT,
+	REPOST,
 	UPDATE_PROFILE
 }

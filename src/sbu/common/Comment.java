@@ -14,6 +14,6 @@ public class Comment implements Serializable{
 	}
 	@Override
   	public String toString(){
-  		return sender.getName() + " to "+ reciever.getName()+ " : "+text+"\n"+ timeString;
+  		return sender.getName() + " to "+ reciever.getName()+ " :\n "+text+"\n"+ timeString;
 	}
 }

@@ -51,9 +51,9 @@ public class ClientHandler implements Runnable{
 					case LIKE:
 						answer = API.like(income);
 						break; 
-					case UNLIKE :
+					/*case UNLIKE :
 						answer = API.unlike(income);
-						break;
+						break;*/
 					case FORGOT_PASS:
 						answer = API.forgotpass(income);
 						break;
@@ -65,6 +65,9 @@ public class ClientHandler implements Runnable{
 						break;
 					case EDIT_POST:
 						answer = API.editPost(income);
+						break;
+					case REPOST:
+						answer = API.repost(income);
 						break;
 					case UPDATE_PROFILE:
 						answer = API.updateProfile(income);
