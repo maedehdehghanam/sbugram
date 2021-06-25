@@ -110,8 +110,9 @@ public class API{
 				if(p.getTitle().equals(thePost.getTitle()) && 
 					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
 				{
-					System.out.println("fuck this");
+					System.out.println("fuck this i unliked it" + p.getLikedPeople().size());
 					p.getLikedPeople().remove(liker);
+					break;
 				}
 			}
 			
@@ -123,10 +124,9 @@ public class API{
 				{
 					System.out.println("fuck this");
 					p.getLikedPeople().add(liker);
+					break;
 				}
 			}
-			//Server.profiles.get(thePost.getPoster()).getPosts().get(index).getLikedPeople().add(liker);
-			//thePost.likePost(liker);
 		}
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));

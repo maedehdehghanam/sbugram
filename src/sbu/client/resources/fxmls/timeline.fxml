@@ -5,30 +5,36 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.4983277591973244" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.TimelineController">
+<SplitPane dividerPositions="0.5267558528428093" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.TimelineController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
          <children>
             <TextField fx:id="title" layoutX="171.0" layoutY="120.0" prefHeight="25.0" prefWidth="210.0" promptText="Title" />
             <TextArea fx:id="caption" layoutX="171.0" layoutY="151.0" prefHeight="100.0" prefWidth="210.0" promptText="Caption" style="-fx-background-color: #E5C1CD;" />
-            <Button fx:id="publish" layoutX="344.0" layoutY="15.0" mnemonicParsing="false" onAction="#hey" style="-fx-background-color: #FF2079;" text="Post" />
-            <Button layoutX="234.0" layoutY="15.0" mnemonicParsing="false" onAction="#newPost" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #FF2079;" text="Add New Post" />
-            <Button fx:id="logout" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #FF2079;" text="Logout" />
+            <Button fx:id="publish" layoutX="17.0" layoutY="226.0" mnemonicParsing="false" onAction="#hey" style="-fx-background-color: #9F81CD;" text="Post" />
+            <Button layoutX="314.0" layoutY="14.0" mnemonicParsing="false" onAction="#newPost" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #1791B1;" text="New Post" />
+            <Button fx:id="logout" layoutX="4.0" layoutY="15.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #1791B1;" text="Logout" />
             <Button fx:id="repost" layoutX="333.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="repost" />
             <Button fx:id="comment" layoutX="257.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #FFEEFF;" text="Comment" />
             <Button fx:id="like" layoutX="187.0" layoutY="50.0" mnemonicParsing="false" onAction="#likeThePost" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #FFEEFF;" text="LIKE" />
-            <Button fx:id="timelineposts" layoutX="123.0" layoutY="15.0" mnemonicParsing="false" onAction="#showTimeLine" prefHeight="25.0" prefWidth="99.0" text="time Line" />
+            <Button fx:id="timelineposts" layoutX="238.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTimeLine" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #9F81CD;" text="Time Line" />
             <Button fx:id="unlike" layoutX="187.0" layoutY="50.0" mnemonicParsing="false" onAction="#likeThePost" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: #FFAAFF;" text="UNLIKE" />
             <Button fx:id="unrepost" layoutX="332.0" layoutY="51.0" mnemonicParsing="false" onAction="#repostThePost" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #7CCAAE;" text="repost" />
             <TextField fx:id="commentfield" layoutX="17.0" layoutY="226.0" promptText="comment..." />
+            <ImageView fx:id="chosenImage" fitHeight="199.0" fitWidth="353.0" layoutX="23.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="chooseButton" layoutX="74.0" layoutY="226.0" mnemonicParsing="false" onAction="#addImage" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #9F81CD;" text="Add Photo" />
+            <Button layoutX="178.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #9F81CD;" text="Search" />
+            <Button layoutX="123.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #9F81CD;" text="Profile" />
+            <Button fx:id="login" layoutX="63.0" layoutY="15.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #1791B1;" text="Login " />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="398.0">
          <children>
-            <ListView fx:id="commentList" prefHeight="256.0" prefWidth="398.0" style="-fx-background-color: #F3DBCF;" />
-            <ListView fx:id="likeList" layoutX="6.0" prefHeight="256.0" prefWidth="398.0" style="-fx-background-color: #FEADB9;" />
-            <ListView fx:id="postList" onMouseClicked="#showPost" prefHeight="398.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;" />
+            <ListView fx:id="commentList" layoutX="-2.0" prefHeight="509.0" prefWidth="400.0" style="-fx-background-color: #F3DBCF;" />
+            <ListView fx:id="likeList" layoutX="6.0" prefHeight="515.0" prefWidth="398.0" style="-fx-background-color: #FEADB9;" />
+            <ListView fx:id="postList" onMouseClicked="#showPost" prefHeight="515.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;" />
          </children></AnchorPane>
   </items>
 </SplitPane>

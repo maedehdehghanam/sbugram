@@ -10,12 +10,13 @@ public class Post implements Serializable {
 	private final String timeString;
 	private List<Profile> likedPeople;
 	private long numberOfLikes;
-	private Object postingPicture;
+	//private Object postingPicture;
 	private String caption;
 	private List<Comment> comments;
 	private boolean deleted = false;
 	private Profile poster;
 	private String title;
+	private byte[] chosenImage;
 	public Post(){
 		comments = new Vector<>();
 		numberOfLikes = 0;
@@ -23,9 +24,9 @@ public class Post implements Serializable {
 		createdTime = Time.getMilli();
     	timeString = Time.getTime();
 	}
-	public Post(Object postingPicture, String caption, Profile poster, String title){
+	public Post(byte[] postingPicture, String caption, Profile poster, String title){
 		this();
-		this.postingPicture = postingPicture;
+		this.chosenImage =(byte[]) postingPicture;
 		this.caption = caption;
 		this.poster = poster;
 		this.title =  title;
@@ -41,6 +42,9 @@ public class Post implements Serializable {
   	}
   	public void deletePost(){
   		deleted = true;
+  	}
+  	public byte[] postImage(){
+  		return chosenImage;
   	}
   	/*@Override
   	public int compareTo(Object o) {

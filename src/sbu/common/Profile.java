@@ -15,6 +15,7 @@ public class Profile implements Serializable {
   private ArrayList<Profile> followings = new ArrayList<>();
   private ArrayList<Post> posts = new ArrayList<>();
   private ArrayList<Post> allPosts;
+  private byte[] profileImage;
 	public Profile(String userName, String password, 
 		int birthyear,String name,RecoverOptions option ,String passRecover){
 		this.username =  userName;
@@ -40,6 +41,9 @@ public class Profile implements Serializable {
     }
     public String toString() {
         return "" + username + ": " + name + "\nbirth year: " + birthyear + "";
+    }
+    public void setNewProfilepic(byte[] chosenprofile){
+      profileImage = chosenprofile;
     }
     public RecoverOptions getRecoverOption(){
       return option;

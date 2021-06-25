@@ -9,10 +9,21 @@ import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.shape.*;
 import javafx.stage.*;
-
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 public class signupController {
 	//@FXML
 	//private ChoiceBox cb ;
@@ -38,6 +49,13 @@ public class signupController {
     private ChoiceBox<String> cb = new ChoiceBox<>();
     @FXML
     private Button back;
+    @FXML
+    private Label successed;
+    @FXML
+    private Button addProfileButton;
+    @FXML
+    private ImageView profileImg;
+    public byte[] profileImageByteArray;
     public void connectToServer(){
         try{
             if ( !Connector.isConnected() ){
@@ -104,12 +122,36 @@ public class signupController {
         }
 
         Profile justCreatedProfile = new Profile(username,password,birth,fullname,option,recover);
-        if(API.signUp(justCreatedProfile))
+        if(API.signUp(justCreatedProfile)){
+            if(profileImageByteArray!=null){
+                justCreatedProfile.setNewProfilepic(profileImageByteArray);
+            }
             System.out.println("happy happy me!");
+            successed.setVisible(true);
+        }
         if(Main.currentUser == null)
             Main.currentUser = justCreatedProfile;
 
     }
+
+    public void addProfile(ActionEvent actionEvent) {
+        Stage stage=new Stage();
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("select profile");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG" , "*.png") ,
+                new FileChooser.ExtensionFilter("JPG" , "*.jpg"));
+        File file = fileChooser.showOpenDialog(stage);
+        Image image=new Image(file.toURI().toString());
+        byte[] imageToByteArray;
+        try {
+            imageToByteArray= Files.readAllBytes(file.toPath());
+            profileImageByteArray=imageToByteArray;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        profileImg.setImage(image);
+    }
+
     public void backToLogin(ActionEvent event){
          sbu.client.Main.newfxml("page1.fxml");
     }

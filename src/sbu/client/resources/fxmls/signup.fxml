@@ -41,6 +41,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="successed" layoutX="132.0" layoutY="492.0" prefHeight="17.0" prefWidth="199.0" text="Signed up successfully!" textFill="#38f811" />
+      <Label fx:id="successed" layoutX="132.0" layoutY="492.0" prefHeight="17.0" prefWidth="199.0" text="Signed up successfully!" textFill="#38f811" visible="false" />
+      <ImageView fx:id="profileImg" fitHeight="92.0" fitWidth="211.0" layoutX="85.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="115.0" layoutY="171.0" mnemonicParsing="false" onAction="#addProfile" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #9F81CD;" text="add profile" />
    </children>
 </Pane>

@@ -2,7 +2,7 @@ package sbu.client.controller;
 
 import sbu.common.*;
 import sbu.client.*;
-//import sbu.server.*;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.*;
@@ -16,21 +16,32 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.control.*;
-import javafx.scene.image.*;
-import javafx.scene.shape.*;
-import javafx.stage.*;
 import java.io.*;
 import java.util.*;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.shape.*;
+import javafx.stage.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 public class TimelineController{
 	@FXML
 	private TextArea caption;
 	@FXML
 	private TextField title;
-	@FXML 
+	@FXML
 	private Button publish;
 	@FXML
 	private ListView postList;
@@ -44,18 +55,24 @@ public class TimelineController{
 	private Button like;
 	@FXML
 	private Button repost;
-
+	@FXML
+	private Button login;
 	@FXML
 	private Button unlike;
 	@FXML
 	private Button unrepost;
 	@FXML
 	private TextField commentfield;
-
 	@FXML
 	private Button comment;
 	@FXML
 	private Button timelineposts;
+	@FXML
+	private Button chooseButton;
+	@FXML
+    private ImageView chosenImage;
+
+    public byte[] chosenimageByteArray = null;
 	private Profile user = Main.currentUser; 
 	private ArrayList<Post> posted = user.getAllPosts();
 	private Post currentPost = null;
@@ -90,29 +107,59 @@ public class TimelineController{
     	unrepost.setVisible(false);
     	commentfield.setVisible(false);
     	publish.setVisible(true);
+    	chooseButton.setVisible(true);
     }
     //making posting part ready for new post
     public void newPost(ActionEvent event){
     	setButtonNewPost();
+    	chooseButton.setVisible(true);
     	commentList.setVisible(false);
     	likeList.setVisible(false);
     	postList.setVisible(true);
+    	chosenimageByteArray = null;
     	title.setText("");
     	caption.setText("");
     	publish.setVisible(true);
+    	chooseButton.setVisible(true);
 
     }
     //publishin a new post
     public void hey(ActionEvent event){
     	setButtonNewPost();
     	System.out.println(posted.size());
-    	currentPost = new Post(null,caption.getText(),user,title.getText());
+    	currentPost = new Post(chosenimageByteArray,caption.getText(),user,title.getText());
     	posted.add(currentPost);
     	sbu.client.API.sendPost(currentPost);
+    	postList.getItems().clear();
+    	posted = user.getAllPosts();
+    	for (Post p : posted ) {
+    		postList.getItems().add(p.toString());
+    	}
     	postList.getItems().add(currentPost.toString());
+ 		chosenimageByteArray = null;
     	title.setText("");
     	caption.setText("");
-    	posted = user.getAllPosts();
+    	chooseButton.setVisible(false);
+    	publish.setVisible(false);
+    	
+    }
+    //chose image
+    public void addImage(ActionEvent actionEvent) {
+        Stage stage=new Stage();
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("select profile");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG" , "*.png") ,
+                new FileChooser.ExtensionFilter("JPG" , "*.jpg"));
+        File file = fileChooser.showOpenDialog(stage);
+        Image image=new Image(file.toURI().toString());
+        byte[] imageToByteArray;
+        try {
+            imageToByteArray= Files.readAllBytes(file.toPath());
+            chosenimageByteArray=imageToByteArray;
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        chosenImage.setImage(image);
     }
     //showing a selcted post from timeline
     public void showPost(MouseEvent event){
@@ -121,6 +168,11 @@ public class TimelineController{
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
     	Main.mainPost = posted.get(index);
+    	if(posted.get(index).postImage()!=null){
+            chosenImage.setImage(new Image(new ByteArrayInputStream(posted.get(index).postImage())));
+        } else{
+        	chosenimageByteArray = null;
+        }
     	if (Main.mainPost.getLikedPeople().contains(Main.currentUser)) {
     		unlike.setVisible(true);
     		like.setVisible(false);
@@ -156,7 +208,11 @@ public class TimelineController{
     		unlike.setVisible(true);
     	}
     	System.out.println(Main.mainPost.getLikedPeople().size());
+    	postList.getItems().clear();
     	posted = user.getAllPosts();
+    	for (Post p : posted ) {
+    		postList.getItems().add(p.toString());
+    	}
     }
     public void commentForThePost(ActionEvent e){
     	posted = user.getAllPosts();
@@ -201,6 +257,7 @@ public class TimelineController{
     	title.setText("");
     	caption.setText("");
     	publish.setVisible(true);
+    	chooseButton.setVisible(true);
     	commentList.setVisible(false);
     	likeList.setVisible(false);
     	postList.setVisible(true);
@@ -217,16 +274,10 @@ public class TimelineController{
     		likeList.getItems().add(p.getUserName());
     	}
     }
-    // showing commentsunder the post
-    /*public void showPostComments(ActionEvent e){
-    	setButtonSelectedPost();
-    	commentList.setVisible(true);
-    	likeList.setVisible(false);
-    	postList.setVisible(false);
-    	for (Comment p : Main.mainPost.getComments() ) {
-    		commentList.getItems().add(p.toString());
-    	}
-    }*/
+    //back to login page
+    public void login(ActionEvent e){
+    	Main.newfxml("page1.fxml");
+    }
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
