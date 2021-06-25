@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 public enum Command {
 	CHECK_USERNAME,
+	UPDATE,
 	LOGIN,
 	SIGNUP,
 	LOGOUT,

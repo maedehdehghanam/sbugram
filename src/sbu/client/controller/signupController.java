@@ -121,11 +121,8 @@ public class signupController {
             option = RecoverOptions.FIRST_TEACHER;
         }
 
-        Profile justCreatedProfile = new Profile(username,password,birth,fullname,option,recover);
+        Profile justCreatedProfile = new Profile(username,password,birth,fullname,option,recover, profileImageByteArray);
         if(API.signUp(justCreatedProfile)){
-            if(profileImageByteArray!=null){
-                justCreatedProfile.setNewProfilepic(profileImageByteArray);
-            }
             System.out.println("happy happy me!");
             successed.setVisible(true);
         }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.35785953177257523" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
+         <children>
+            <ImageView fx:id="thepPic" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
+         <children>
+            <ListView layoutY="-1.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #B6B4C2;" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -99,6 +99,15 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
+	public static Map<String,Object> update(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.UPDATE);
+		Profile user = (Profile) income.get("profile");
+		ArrayList<Post> timelinePosts = Server.profiles.get(user.getUserName()).getAllPosts();
+		ans.put("timelinePosts",timelinePosts);
+		return ans;
+	}
+
 	public static Map<String,Object> like(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LIKE);
@@ -112,7 +121,9 @@ public class API{
 				{
 					System.out.println("fuck this i unliked it" + p.getLikedPeople().size());
 					p.getLikedPeople().remove(liker);
-					break;
+					DBManager.getInstance().updateDataBase();
+					ans.put("success", new Boolean(true));
+					return ans;
 				}
 			}
 			
@@ -122,7 +133,7 @@ public class API{
 				if(p.getTitle().equals(thePost.getTitle()) && 
 					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
 				{
-					System.out.println("fuck this");
+					System.out.println("fuck this"+p.getLikedPeople().size() );
 					p.getLikedPeople().add(liker);
 					break;
 				}
@@ -132,16 +143,6 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
-	/*public static Map<String,Object> unlike(Map<String,Object> income){
-		Map<String,Object> ans = new HashMap<>();
-		ans.put("command",Command.UNLIKE);
-		Post thePost = (Post) income.get("post");
-		Profile liker = (Profile) income.get("profile");
-		thePost.unlikePost(liker);
-		DBManager.getInstance().updateDataBase();
-		ans.put("success", new Boolean(true));
-		return ans;
-	}*/
 	public static Map<String,Object> forgotpass(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.FORGOT_PASS);

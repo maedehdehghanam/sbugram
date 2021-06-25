@@ -69,11 +69,15 @@ public class ClientHandler implements Runnable{
 					case REPOST:
 						answer = API.repost(income);
 						break;
+					case UPDATE:
+						answer = API.update(income);
+						break;
 					case UPDATE_PROFILE:
 						answer = API.updateProfile(income);
 						break;
  				}
-				socketOut.writeObject(answer);
+				socketOut.writeUnshared(answer);
+				socketOut.reset();
 				socketOut.flush();
 			}catch(Exception e){
 				e.printStackTrace();

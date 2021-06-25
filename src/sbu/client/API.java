@@ -39,9 +39,6 @@ public class API{
 		return (Boolean) recieved.get("success");
 	}
 	public static Profile forgotpass(String username){
-		/*Map<String,Object> toSend = new HashMap<>();
-		toSend.put("username",username);
-		toSend.put("command", Command.FORGOT_PASS);*/
 		Map<String,Object> recieved = Connector.serve(Map.of("username",username,"command", Command.FORGOT_PASS));
 		return (Profile) recieved.get("profile");
 	}
@@ -70,6 +67,13 @@ public class API{
 		toSend.put("changeable",changeable);
 		Connector.serve(toSend);
 
+	}
+	public static ArrayList<Post> updateTimeline(Profile user ){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.UPDATE);
+		toSend.put("profile",user);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return  (ArrayList<Post>) recieved.get("timelinePosts");
 	}
 	public static Boolean like(Post post,Profile profile){
 		Map<String,Object> toSend = new HashMap<>();

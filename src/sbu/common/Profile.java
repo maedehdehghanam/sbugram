@@ -17,13 +17,14 @@ public class Profile implements Serializable {
   private ArrayList<Post> allPosts;
   private byte[] profileImage;
 	public Profile(String userName, String password, 
-		int birthyear,String name,RecoverOptions option ,String passRecover){
+		int birthyear,String name,RecoverOptions option ,String passRecover,byte[] profileImage){
 		this.username =  userName;
     this.name = name;
 		this.password =  password;
 		this.birthyear =  birthyear;
 		this.option = option;
 		this.passRecover = passRecover;
+    this.profileImage = profileImage;
 	}
 	public int hashCode() {
         return username.hashCode();
@@ -44,6 +45,9 @@ public class Profile implements Serializable {
     }
     public void setNewProfilepic(byte[] chosenprofile){
       profileImage = chosenprofile;
+    }
+    public byte[] getProfilepic(){
+      return profileImage;
     }
     public RecoverOptions getRecoverOption(){
       return option;

@@ -71,6 +71,10 @@ public class TimelineController{
 	private Button chooseButton;
 	@FXML
     private ImageView chosenImage;
+    @FXML
+    private Button profileCheck;
+    @FXML
+    private ImageView posterPic;
 
     public byte[] chosenimageByteArray = null;
 	private Profile user = Main.currentUser; 
@@ -83,6 +87,11 @@ public class TimelineController{
         for (Post p : posted ) {
     		postList.getItems().add(p.toString());
     	}
+    	if(user.getProfilepic()!=null){
+            posterPic.setImage(new Image(new ByteArrayInputStream(user.getProfilepic())));
+        } else{
+        	posterPic.setImage(null);
+        }
     	like.setVisible(false);
     	comment.setVisible(false);
     	repost.setVisible(false);
@@ -111,7 +120,15 @@ public class TimelineController{
     }
     //making posting part ready for new post
     public void newPost(ActionEvent event){
+    	updateTimeLine();
     	setButtonNewPost();
+    	if(user.getProfilepic()!=null){
+    		System.out.println("not null!");
+            posterPic.setImage(new Image(new ByteArrayInputStream(user.getProfilepic())));
+        } else{
+        	posterPic.setImage(null);
+        }
+    	chosenImage.setImage(null);
     	chooseButton.setVisible(true);
     	commentList.setVisible(false);
     	likeList.setVisible(false);
@@ -141,6 +158,7 @@ public class TimelineController{
     	caption.setText("");
     	chooseButton.setVisible(false);
     	publish.setVisible(false);
+    	updateTimeLine();
     	
     }
     //chose image
@@ -163,11 +181,21 @@ public class TimelineController{
     }
     //showing a selcted post from timeline
     public void showPost(MouseEvent event){
+    	updateTimeLine();
+    	chooseButton.setVisible(false);
+    	chosenImage.setImage(null);
     	posted = user.getAllPosts();
     	setButtonSelectedPost();
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
     	Main.mainPost = posted.get(index);
+
+    	if(posted.get(index).getPoster().getProfilepic()!=null){
+            posterPic.setImage(new Image(new ByteArrayInputStream(posted.get(index).getPoster().getProfilepic())));
+        } else{
+        	posterPic.setImage(null);
+        }
+
     	if(posted.get(index).postImage()!=null){
             chosenImage.setImage(new Image(new ByteArrayInputStream(posted.get(index).postImage())));
         } else{
@@ -196,17 +224,17 @@ public class TimelineController{
     }
     //+ text fields
     public void likeThePost(ActionEvent e){
+    	updateTimeLine();
     	if((Main.mainPost.getLikedPeople()).contains(Main.currentUser)){
     		boolean y = API.like(Main.mainPost,Main.currentUser);
-    		//Main.mainPost.getLikedPeople().remove(Main.currentUser);
     		unlike.setVisible(false);
     		like.setVisible(true);
     	}else{
     		boolean x = API.like(Main.mainPost,Main.currentUser);
-    		//Main.mainPost.getLikedPeople().add(Main.currentUser);
     		like.setVisible(false);
     		unlike.setVisible(true);
     	}
+    	updateTimeLine();
     	System.out.println(Main.mainPost.getLikedPeople().size());
     	postList.getItems().clear();
     	posted = user.getAllPosts();
@@ -215,7 +243,7 @@ public class TimelineController{
     	}
     }
     public void commentForThePost(ActionEvent e){
-    	posted = user.getAllPosts();
+    	updateTimeLine();
     	setButtonSelectedPost();
     	commentList.getItems().clear();
     	commentList.setVisible(true);
@@ -245,8 +273,13 @@ public class TimelineController{
     }
     //showing timeline
     public void showTimeLine(ActionEvent e){
-    	posted = user.getAllPosts();
+    	updateTimeLine();
     	setButtonNewPost();
+    	if(user.getProfilepic()!=null){
+            posterPic.setImage(new Image(new ByteArrayInputStream(user.getProfilepic())));
+        } else{
+        	posterPic.setImage(null);
+        }
     	postList.getItems().clear();
     	for (Post p : posted ) {
     		postList.getItems().add(p.toString());
@@ -264,7 +297,7 @@ public class TimelineController{
     }
     //showing who has liked the post
     public void showPostLike(MouseEvent event){
-    	posted = user.getAllPosts();
+    	updateTimeLine();
     	setButtonSelectedPost();
     	likeList.getItems().clear();
     	commentList.setVisible(false);
@@ -273,6 +306,22 @@ public class TimelineController{
     	for (Profile p : Main.mainPost.getLikedPeople() ) {
     		likeList.getItems().add(p.getUserName());
     	}
+    	updateTimeLine();
+    }
+    //
+    /*public void profileChecking(ActionEvent e){
+    	Main.checkingUser = Main.mainPost.getPoster();
+    	Main.newfxml("Profile.fxml");
+    }*/
+    //get updet posts
+    public void updateTimeLine(){
+    	if(user.getProfilepic()!=null){
+            posterPic.setImage(new Image(new ByteArrayInputStream(user.getProfilepic())));
+        } else{
+        	posterPic.setImage(null);
+        }
+    	posted = API.updateTimeline(Main.currentUser);
+    	chosenImage.setImage(null);
     }
     //back to login page
     public void login(ActionEvent e){
@@ -282,6 +331,7 @@ public class TimelineController{
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
     }
+
 
 
 }
