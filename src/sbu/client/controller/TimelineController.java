@@ -191,6 +191,7 @@ public class TimelineController{
     	chooseButton.setVisible(false);
     	chosenImage.setImage(null);
     	posted = user.getAllPosts();
+        updateTimeLine();
     	setButtonSelectedPost();
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
@@ -320,7 +321,7 @@ public class TimelineController{
     }
     //
     public void profileChecking(ActionEvent e){
-    	Main.checkingUser = Main.mainPost.getPoster();
+    	Main.checkingUser = API.updateUser(Main.mainPost.getPoster());
     	Main.newfxml("Profile.fxml");
     }
     //get updet posts

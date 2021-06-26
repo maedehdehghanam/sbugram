@@ -279,7 +279,7 @@ public class API{
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.GETUSERPOST);
 		Profile theUser =  ((Profile) income.get("profile") );
-		ans.put("userpost",Server.profiles.get(theUser.getUserName()).getPosts());
+		ans.put("userposts",Server.profiles.get(theUser.getUserName()).getPosts());
 		return ans;
 	}
 	public static  Map<String,Object> deletePost(Map<String,Object> income){
