@@ -60,7 +60,11 @@ public class API{
 	public static Map<String,Object> getAllUsers(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.GETALLUSERS);
-		ans.put("allusers",Server.profiles);
+		ArrayList<Profile> p = new ArrayList<Profile>();
+		for (String key : Server.profiles.keySet()) {
+			  p.add(Server.profiles.get(key));
+		}
+		ans.put("allusers",p);
 		return ans;
 	}
 	public static Map<String,Object> logout(Map<String,Object> income){

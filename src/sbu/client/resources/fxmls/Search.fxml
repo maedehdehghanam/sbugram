@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #B6B4C2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.SearchController">
    <children>
-      <TableView fx:id="tableview" layoutX="7.0" layoutY="87.0" prefHeight="498.0" prefWidth="385.0">
+      <TableView fx:id="tableview" layoutX="4.0" layoutY="87.0" prefHeight="508.0" prefWidth="388.0" style="-fx-background-color: #AAC9CE;">
         <columns>
-          <TableColumn fx:id="usernameColumn" prefWidth="191.0" text="C1" />
-          <TableColumn fx:id="nameColumn" prefWidth="193.0" text="C2" />
+          <TableColumn fx:id="usernameColumn" prefWidth="191.0" text="usernames" />
+          <TableColumn fx:id="namesColumn" prefWidth="193.0" text="names" />
         </columns>
       </TableView>
-      <TextField fx:id="filterField" layoutX="104.0" layoutY="42.0" prefHeight="25.0" prefWidth="183.0" promptText="search username or name " />
-      <Button fx:id="s" layoutX="40.0" layoutY="42.0" mnemonicParsing="false" onAction="#searchiii" text="Button" />
+      <TextField fx:id="filterField" layoutX="121.0" layoutY="30.0" prefHeight="25.0" prefWidth="207.0" promptText="search username or name " style="-fx-background-color: #FFEEFF;" />
+      <Button fx:id="s" layoutX="25.0" layoutY="42.0" mnemonicParsing="false" onAction="#searchiii" style="-fx-background-color: #9F81CD;" text="Show profile" />
+      <Button fx:id="timeline" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#timeline" prefHeight="15.0" prefWidth="82.0" style="-fx-background-color: #9F81CD;" text="TimeLine" />
    </children>
 </Pane>

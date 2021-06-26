@@ -69,8 +69,8 @@ public class TimelineController{
 	private Button timelineposts;
 	@FXML
 	private Button chooseButton;
-    @FXML
-    private Button search;
+   /* @FXML
+    private Button search;*/
     @FXML
     private Button s;
 	@FXML

@@ -56,13 +56,15 @@ public class SearchController{
 	@FXML
 	private TableView<Profile> tableview;
 	@FXML
-	private TableColumn<Profile,String> usernamesColumn;
+	private TableColumn<Profile,String> usernameColumn;
 	@FXML
 	private TableColumn<Profile,String> namesColumn;
 	/*@FXML
-	private Button search;*/
+	private Button search;
 	@FXML
-	private Button s;
+	private Button s;*/
+	@FXML 
+	private Button timeline;
 	private ObservableList<Profile> dataList = FXCollections.observableArrayList();
 
 	private List<Profile> allUsers = API.getAllUsers();
@@ -71,7 +73,7 @@ public class SearchController{
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
 		allUsers = API.getAllUsers();
-		usernamesColumn.setCellValueFactory(new PropertyValueFactory<>("username")); 
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<>("iusername")); 
 		namesColumn.setCellValueFactory(new PropertyValueFactory<>("name")); 
 		dataList.addAll(allUsers);
 		 FilteredList<Profile> filteredData = new FilteredList<>(dataList, b -> true);
@@ -87,7 +89,7 @@ public class SearchController{
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (employee.getUserName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+				if (employee.getIusername().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 					return true; // Filter matches first name.
 				} else if (employee.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true; // Filter matches last name.
@@ -108,7 +110,13 @@ public class SearchController{
 		tableview.setItems(sortedData);
     }
     public void searchiii(ActionEvent e){
-    	System.out.println("wh");
+    	ObservableList<Profile> selectedItems = tableview.getSelectionModel().getSelectedItems();
+    	Main.checkingUser = API.forgotpass(selectedItems.get(0).getUserName() );
+    	Main.newfxml("Profile.fxml");
+
+    }
+    public void timeline(ActionEvent e){
+    	sbu.client.Main.newfxml("timeline.fxml");
     }
 
 

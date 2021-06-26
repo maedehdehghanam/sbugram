@@ -64,11 +64,25 @@ public class ProfileController{
 	@FXML
 	private Button timelineposts;
 	@FXML
+	private Button search;
+	@FXML
+	private Button allPosts;
+	@FXML
+	private Button like;
+	@FXML
+	private Button comment;
+	@FXML
 	private ListView postList;
-
+	@FXML
+	private ListView likeList;
+	@FXML
+	private ListView commentList;
+	private Post post;
 	private ArrayList<Post> posted = API.updateTimeline(Main.checkingUser);
 	public void initialize() {
-
+		commentList.setVisible(false);
+    	likeList.setVisible(false);
+    	postList.setVisible(true);
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         for (Post p : posted ) {
@@ -95,6 +109,7 @@ public class ProfileController{
     	postImage.setImage(null);
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
+    	post = posted.get(index);
     	if(posted.get(index).postImage()!=null){
             postImage.setImage(new Image(new ByteArrayInputStream(posted.get(index).postImage())));
         } else{
@@ -102,6 +117,46 @@ public class ProfileController{
         }
 
 
+    }
+    //comment for post
+    public void commentForThePost(ActionEvent e){
+    	commentList.getItems().clear();
+    	commentList.setVisible(true);
+    	likeList.setVisible(false);
+    	postList.setVisible(false);
+    	for (Comment p : API.getComments(post) ) {
+    		commentList.getItems().add(p.toString());
+    	}
+    	if((!commentfield.getText().equals("")) || commentfield.getText()==null){
+	    	Comment c = new Comment(Main.currentUser,post.getPoster(),commentfield.getText());
+	    	boolean x = API.comment(post,c);
+	    	commentList.getItems().add(c.toString());
+    	}
+    	commentfield.setText("");
+    }
+    //like the post
+    public void likeThePost(ActionEvent e){
+    	if((post.getLikedPeople()).contains(Main.currentUser)){
+    		boolean y = API.like(post,Main.currentUser);
+    		//unlike.setVisible(false);
+    		like.setVisible(true);
+    	}else{
+    		boolean x = API.like(post,Main.currentUser);
+    		like.setVisible(false);
+    		//unlike.setVisible(true);
+    	}
+    	System.out.println(post.getLikedPeople().size());
+    	postList.getItems().clear();
+    	posted =  API.updateTimeline(Main.checkingUser);
+    	for (Post p : posted ) {
+    		postList.getItems().add(p.toString());
+    	}
+    }
+    //show all posts
+    public void showAllPosts(ActionEvent e){
+    	postList.setVisible(true);
+    	likeList.setVisible(false);
+    	commentList.setVisible(false);
     }
     //back to time line
     public void timeline(ActionEvent e){
@@ -114,6 +169,9 @@ public class ProfileController{
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
+    }
+    public void searchPage(ActionEvent e){
+        Main.newfxml("Search.fxml");
     }
 
 }

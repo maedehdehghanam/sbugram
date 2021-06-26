@@ -8,6 +8,7 @@ public class Profile implements Serializable {
 	private String username;
 	private String name;
 	private String password;
+  private String iusername;
 	private final int birthyear;
 	private final RecoverOptions option;
 	private final String passRecover;
@@ -25,6 +26,7 @@ public class Profile implements Serializable {
 		this.option = option;
 		this.passRecover = passRecover;
     this.profileImage = profileImage;
+    iusername = username;
 	}
 	public int hashCode() {
         return username.hashCode();
@@ -51,6 +53,9 @@ public class Profile implements Serializable {
     }
     public RecoverOptions getRecoverOption(){
       return option;
+    }
+    public String getIusername(){
+      return iusername;
     }
     public String getPassRecover(){
       return passRecover;
@@ -86,6 +91,11 @@ public class Profile implements Serializable {
     }
     public ArrayList<Post> getPosts(){
       return posts;
+    }
+    public boolean equals(Profile p){
+      if(p.getUserName().equals(username))
+        return true;
+      return false;
     }
     public void post(Post thePost){
       posts.add(thePost);
