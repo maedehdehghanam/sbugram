@@ -162,6 +162,45 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
+	public static Map<String,Object> follow(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.FOLLOW);
+		Profile profile =  ((Profile) income.get("profile") );
+		Profile follow = (Profile) income.get("follow");
+		if(Server.profiles.get(follow.getUserName()).getFollowers().contains(profile)){
+			Server.profiles.get(follow.getUserName()).getFollowers().remove(profile);
+		}else {
+			Server.profiles.get(follow.getUserName()).getFollowers().add(profile);
+		}
+		DBManager.getInstance().updateDataBase();
+		ans.put("success", new Boolean(true));
+		return ans;
+	}
+	public static Map<String,Object> updatePost(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.UPDATEPOST);
+		Profile thePoster =  ((Post) income.get("post") ).getPoster();
+		Post rec = (Post) income.get("post");
+		String title =  ((Post) income.get("post") ).getTitle();
+		List<Post> check = Server.profiles.get(thePoster.getUserName()).getPosts();
+		Post thePost = null;
+		for (Post p : check ){
+			if(p.getTitle().equals(rec.getTitle()))
+			{
+				thePost = p;
+				break;
+			}
+		}
+		ans.put("updatedPost",thePost);
+		return ans;
+	}
+	public static Map<String,Object> updateUser(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.UPDATEUSER);
+		Profile theUser =  ((Profile) income.get("profile") );
+		ans.put("updatedUser",Server.profiles.get(theUser.getUserName()));
+		return ans;
+	}
 	public static Map<String,Object> forgotpass(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.FORGOT_PASS);

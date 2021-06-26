@@ -72,6 +72,8 @@ public class ProfileController{
 	@FXML
 	private Button comment;
 	@FXML
+	private Button flw;
+	@FXML
 	private ListView postList;
 	@FXML
 	private ListView likeList;
@@ -136,6 +138,7 @@ public class ProfileController{
     }
     //like the post
     public void likeThePost(ActionEvent e){
+    	post = API.updatePost(post);
     	if((post.getLikedPeople()).contains(Main.currentUser)){
     		boolean y = API.like(post,Main.currentUser);
     		//unlike.setVisible(false);
@@ -158,6 +161,15 @@ public class ProfileController{
     	likeList.setVisible(false);
     	commentList.setVisible(false);
     }
+    //follow!
+    public void follow(ActionEvent e){
+    	Main.currentUser = API.updateUser(Main.currentUser);
+    	if(API.follow(Main.checkingUser,Main.currentUser)){
+    		followers.setText("followers: "+String.valueOf(API.updateUser(Main.checkingUser).getFollowers().size()));
+    	}
+    	Main.checkingUser = API.updateUser(Main.checkingUser);
+
+    }
     //back to time line
     public void timeline(ActionEvent e){
     	sbu.client.Main.newfxml("timeline.fxml");
@@ -173,5 +185,6 @@ public class ProfileController{
     public void searchPage(ActionEvent e){
         Main.newfxml("Search.fxml");
     }
+    	
 
 }

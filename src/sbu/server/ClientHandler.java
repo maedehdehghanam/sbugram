@@ -51,9 +51,9 @@ public class ClientHandler implements Runnable{
 					case LIKE:
 						answer = API.like(income);
 						break; 
-					/*case UNLIKE :
-						answer = API.unlike(income);
-						break;*/
+					case UPDATEPOST :
+						answer = API.updatePost(income);
+						break;
 					case FORGOT_PASS:
 						answer = API.forgotpass(income);
 						break;
@@ -83,6 +83,12 @@ public class ClientHandler implements Runnable{
 						break;
 					case GETLIKES :
 						answer = API.getLikes(income);
+						break;
+					case UPDATEUSER :
+						answer = API.updateUser(income);
+						break;
+					case FOLLOW :
+						answer = API.follow(income);
 						break;
  				}
 				socketOut.writeUnshared(answer);

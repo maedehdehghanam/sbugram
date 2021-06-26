@@ -49,6 +49,20 @@ public class API{
 		toSend.put("poster",thePost.getPoster());
 		Connector.serve(toSend);
 	}
+	public static Post updatePost(Post p){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.UPDATEPOST);
+		toSend.put("post",p);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (Post) recieved.get("updatedPost");
+	}
+	public static Profile updateUser(Profile p){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.UPDATEUSER);
+		toSend.put("profile",p);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (Profile) recieved.get("updatedUser");
+	}
 	public static void repost(Post thePost,Profile profile){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.REPOST);
@@ -83,6 +97,15 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
+	public static Boolean follow(Profile follow,Profile profile){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("profile",profile);
+		toSend.put("follow", follow);
+		toSend.put("command", Command.FOLLOW);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (boolean) recieved.get("success");
+	}
+
 	public static ArrayList<Profile> getAllUsers(){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.GETALLUSERS);

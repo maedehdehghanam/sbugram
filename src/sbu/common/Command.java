@@ -4,6 +4,8 @@ import java.util.*;
 public enum Command {
 	CHECK_USERNAME,
 	UPDATE,
+	UPDATEPOST,
+	UPDATEUSER,
 	GETALLUSERS,
 	GETCOMMENTS,
 	GETLIKES,

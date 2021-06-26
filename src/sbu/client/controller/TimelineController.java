@@ -231,6 +231,8 @@ public class TimelineController{
     //+ text fields
     public void likeThePost(ActionEvent e){
     	updateTimeLine();
+        Main.currentUser = API.updateUser(Main.currentUser);
+        Main.mainPost = API.updatePost(Main.mainPost);
     	if((Main.mainPost.getLikedPeople()).contains(Main.currentUser)){
     		boolean y = API.like(Main.mainPost,Main.currentUser);
     		unlike.setVisible(false);
