@@ -4,6 +4,7 @@ import java.util.*;
 public enum Command {
 	CHECK_USERNAME,
 	UPDATE,
+	GETALLUSERS,
 	LOGIN,
 	SIGNUP,
 	LOGOUT,

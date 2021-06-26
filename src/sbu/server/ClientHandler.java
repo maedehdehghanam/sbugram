@@ -72,6 +72,9 @@ public class ClientHandler implements Runnable{
 					case UPDATE:
 						answer = API.update(income);
 						break;
+					case GETALLUSERS :
+						answer = API.getAllUsers(income);
+						break;
 					case UPDATE_PROFILE:
 						answer = API.updateProfile(income);
 						break;

@@ -83,14 +83,12 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
-	/*public static Boolean unlike(Post post,Profile profile){
+	public static ArrayList<Profile> getAllUsers(){
 		Map<String,Object> toSend = new HashMap<>();
-		toSend.put("profile",profile);
-		toSend.put("post", post);
-		toSend.put("command", Command.UNLIKE);
+		toSend.put("command", Command.GETALLUSERS);
 		Map<String,Object> recieved = Connector.serve(toSend);
-		return (boolean) recieved.get("success");
-	}*/
+		return (ArrayList<Profile>) recieved.get("allusers");
+	}
 	public static Boolean comment(Post post,Comment cm){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("comment",cm);

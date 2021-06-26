@@ -57,6 +57,12 @@ public class API{
 
 		return ans;
 	}
+	public static Map<String,Object> getAllUsers(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETALLUSERS);
+		ans.put("allusers",Server.profiles);
+		return ans;
+	}
 	public static Map<String,Object> logout(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LOGOUT);
@@ -111,10 +117,20 @@ public class API{
 	public static Map<String,Object> like(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LIKE);
-		Post thePost = (Post) income.get("post");
+		Profile thePoster =  ((Post) income.get("post") ).getPoster();
+		Post rec = (Post) income.get("post");
+		String title =  ((Post) income.get("post") ).getTitle();
+		List<Post> check = Server.profiles.get(thePoster.getUserName()).getPosts();
+		Post thePost = null;
+		for (Post p : check ){
+			if(p.getTitle().equals(rec.getTitle()))
+			{
+				thePost = p;
+				break;
+			}
+		}
 		Profile liker = (Profile) income.get("profile");
 		if(thePost.getLikedPeople().contains(liker)){
-			List<Post> check = Server.profiles.get(thePost.getPoster().getUserName()).getPosts();
 			for (Post p : check ) {
 				if(p.getTitle().equals(thePost.getTitle()) && 
 					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
@@ -128,7 +144,6 @@ public class API{
 			}
 			
 		}else {
-			List<Post> check = Server.profiles.get(thePost.getPoster().getUserName()).getPosts();
 			for (Post p : check ) {
 				if(p.getTitle().equals(thePost.getTitle()) && 
 					p.getPoster().getUserName().equals(thePost.getPoster().getUserName()))
