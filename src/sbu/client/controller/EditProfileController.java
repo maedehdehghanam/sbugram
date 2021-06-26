@@ -72,7 +72,6 @@ public class EditProfileController{
         fullname.setText(Main.currentUser.getName());
         usernamee = Main.currentUser.getName();
         birthyear.setText(String.valueOf(Main.currentUser.getBirthyear()));
-        hobby.setText(Main.currentUser.getHobby());
         userhobby = Main.currentUser.getHobby();
         place.setText(Main.currentUser.getPlace());
         userplace =  Main.currentUser.getPlace() ;
@@ -87,10 +86,10 @@ public class EditProfileController{
 	//save changes
 	public void saveChanges(ActionEvent e){
 		if(!usernamee.equals(fullname.getText())){
-			sbu.client.API.updateProfile(userName,password,usernamee,"username",fullname.getText());
+			sbu.client.API.updateProfile(userName,password,usernamee,"name",fullname.getText());
 		}
 		if(!userhobby.equals(hobby.getText())){
-			sbu.client.API.updateProfile(userName,password,usernamee,"hobby",hobby.getText());
+			sbu.client.API.updateProfile(userName,password,usernamee,"hobbys",hobby.getText());
 		}
 		if(!userplace.equals(place.getText())){
 			sbu.client.API.updateProfile(userName,password,usernamee,"place",place.getText());
@@ -98,6 +97,12 @@ public class EditProfileController{
 		if(!userstatus.equals(status.getText())){
 			sbu.client.API.updateProfile(userName,password,usernamee,"status",status.getText());
 		} 
+		Main.currentUser = API.updateUser(Main.currentUser);
+		hobby.setText(Main.currentUser.getHobby());
+		fullname.setText(Main.currentUser.getName());
+		status.setText(Main.currentUser.getStatus());
+		place.setText(Main.currentUser.getPlace());
+
 	}
 
 

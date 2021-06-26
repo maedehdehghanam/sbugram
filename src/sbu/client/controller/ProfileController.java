@@ -54,6 +54,12 @@ public class ProfileController{
 	@FXML
 	private TextField commentfield;
 	@FXML
+	private TextField status;
+	@FXML
+	private TextField hobby;
+	@FXML
+	private TextField place;
+	@FXML
 	private TextArea caption;
 	@FXML
 	private TextField title;
@@ -85,10 +91,13 @@ public class ProfileController{
 	private ListView likeList;
 	@FXML
 	private ListView commentList;
+	@FXML
+	private Label samePlace;
 	private Post post;
-	private ArrayList<Post> posted = API.updateTimeline(Main.checkingUser);
+	private ArrayList<Post> posted = new  ArrayList<Post>();
 	public void initialize() {
-
+		if(API.getUserPost(Main.checkingUser) != null)
+			posted = API.getUserPost(Main.checkingUser);
 		commentList.setVisible(false);
     	likeList.setVisible(false);
     	postList.setVisible(true);
@@ -107,6 +116,9 @@ public class ProfileController{
         following.setText("followings: "+String.valueOf(Main.checkingUser.getFollowings().size()));
         followers.setText("followers: "+String.valueOf(Main.checkingUser.getFollowers().size()));
         birthyear.setText("Birthyear: "+String.valueOf(Main.checkingUser.getBirthyear()));
+        hobby.setText("Hobby: " + Main.checkingUser.getHobby());
+		status.setText("Status: "+ Main.checkingUser.getStatus());
+		place.setText("Place: "+ Main.checkingUser.getPlace());
         if(Main.checkingUser.getUserName().equals(Main.currentUser.getUserName())){
         	edit.setVisible(true);
 			flw.setVisible(false);
@@ -117,6 +129,9 @@ public class ProfileController{
 			flw.setVisible(true);
 			block.setVisible(true);
 			mute.setVisible(true);
+        }
+        if(Main.currentUser.getPlace().equals(Main.checkingUser.getPlace()) && !Main.currentUser.getPlace().equals("")){
+        	samePlace.setVisible(true);
         }
     	
     }
@@ -168,13 +183,18 @@ public class ProfileController{
     	}
     	System.out.println(post.getLikedPeople().size());
     	postList.getItems().clear();
-    	posted =  API.updateTimeline(Main.checkingUser);
+    	posted =  API.getUserPost(Main.checkingUser);
     	for (Post p : posted ) {
     		postList.getItems().add(p.toString());
     	}
     }
     //show all posts
     public void showAllPosts(ActionEvent e){
+    	if(API.getUserPost(Main.checkingUser) != null)
+			posted = API.getUserPost(Main.checkingUser);
+		for (Post p : posted ) {
+    		postList.getItems().add(p.toString());
+    	}
     	postList.setVisible(true);
     	likeList.setVisible(false);
     	commentList.setVisible(false);

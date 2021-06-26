@@ -90,6 +90,9 @@ public class ClientHandler implements Runnable{
 					case FOLLOW :
 						answer = API.follow(income);
 						break;
+					case GETUSERPOST :
+						answer = API.getUserPost(income);
+						break;
  				}
 				socketOut.writeUnshared(answer);
 				socketOut.reset();

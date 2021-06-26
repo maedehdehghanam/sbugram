@@ -70,17 +70,24 @@ public class API{
 		toSend.put("reposter",profile);
 		Connector.serve(toSend);
 	}
-	public static void updateProfile(String userName, String password,String name ,String change,Object changeable)
+	public static void updateProfile(String userName, String password,String name ,String fieldNameTochange,Object newValue)
 	{
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.UPDATE_PROFILE);
 		toSend.put("username",userName);
 		toSend.put("password",password);
 		toSend.put("name", name);
-		toSend.put("change",change);
-		toSend.put("changeable",changeable);
+		toSend.put("fieldNameTochange",fieldNameTochange);
+		toSend.put("newValue",newValue);
 		Connector.serve(toSend);
 
+	}
+	public static ArrayList<Post> getUserPost(Profile user ){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.GETUSERPOST);
+		toSend.put("profile",user);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return  (ArrayList<Post>) recieved.get("userposts");
 	}
 	public static ArrayList<Post> updateTimeline(Profile user ){
 		Map<String,Object> toSend = new HashMap<>();

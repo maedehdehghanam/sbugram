@@ -114,6 +114,8 @@ public class API{
 		ans.put("command",Command.UPDATE);
 		Profile user = (Profile) income.get("profile");
 		ArrayList<Post> timelinePosts = Server.profiles.get(user.getUserName()).getAllPosts();
+		System.out.println( Server.profiles.get(user.getUserName()).getAllPosts().size());
+		System.out.println( Server.profiles.get(user.getUserName()).getPosts().size());
 		ans.put("timelinePosts",timelinePosts);
 		return ans;
 	}
@@ -237,27 +239,47 @@ public class API{
 	public static Map<String,Object> updateProfile(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.UPDATE_PROFILE);
-		String changing = (String) income.get("change");
-		Profile person = Server.profiles.get((String) income.get("username"));
-		if(changing.equals("username")){
-			Server.profiles.get((String) income.get("username")).setUsername((String) income.get("changeable"));
+		String fieldNameTochange = (String) income.get("fieldNameTochange");
+		String username = (String) income.get("username");
+		Profile person = Server.profiles.get(username);
+		Object newValue =income.get("newValue"); 
+		System.out.println("im fucking going to change");
+		switch(fieldNameTochange){
+		case "username":
+			person.setUsername((String) newValue );
+			break;
+		
+		case "password":
+			person.setNewPassword((String) newValue);
+			break;
+		case "name" :
+			person.setName((String)newValue);
+			break;
+		case "profileImage" :
+			person.setNewProfilepic((byte[]) newValue);
+			break;
+		case "hobbys" :
+			person.setHobby((String) newValue);
+			System.out.println("im fucking changing");
+			break;
+		case "place" :
+			person.setPlace((String) newValue);
+			break;
+		case "status":
+			person.setStatus((String) newValue);
+			break;
+			default:
+			System.out.println("i fucking didt change");
 		}
-		else if(changing.equals("password")){
-			Server.profiles.get((String) income.get("username")).setNewPassword((String) income.get("changeable"));
-		}
-		else if(changing.equals("name")){
-			Server.profiles.get((String) income.get("username")).setName((String) income.get("changeable"));
-		} else if(changing.equals("profileImage")) {
-			Server.profiles.get((String) income.get("username")).setNewProfilepic((byte[]) income.get("changeable"));
-
-		} else if(changing.equals("hobbys")){
-			Server.profiles.get((String) income.get("username")).setHobby((String) income.get("changeable"));
-		}else if(changing.equals("place")){
-			Server.profiles.get((String) income.get("username")).setPlace((String) income.get("changeable"));
-		}else if(changing.equals("status")){
-			Server.profiles.get((String) income.get("username")).setStatus((String) income.get("changeable"));
-		}
+	
 		DBManager.getInstance().updateDataBase();
+		return ans;
+	}
+	public static Map<String,Object> getUserPost(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETUSERPOST);
+		Profile theUser =  ((Profile) income.get("profile") );
+		ans.put("userpost",Server.profiles.get(theUser.getUserName()).getPosts());
 		return ans;
 	}
 	public static  Map<String,Object> deletePost(Map<String,Object> income){
@@ -282,12 +304,6 @@ public class API{
 		ans.put("success", new Boolean(true));
 		return ans;
 	}
-	/*public static Map<String,Object> follow(Map<String,Object> income){
-		Map<String,Object> ans = new HashMap<>();
-		ans.put("command",Command.FOLLOW);
-		Profile follow = (Profile) income.get("following");
-		Profile follower =(Profile) in
-	}*/
 	public static Map<String,Object> getComments(Map<String,Object> income){
 		
 		Map<String,Object> ans = new HashMap<>();

@@ -12,6 +12,7 @@ public enum Command {
 	LOGIN,
 	SIGNUP,
 	LOGOUT,
+	GETUSERPOST,
 	POST,
 	LIKE,
 	UNLIKE,
