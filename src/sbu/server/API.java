@@ -253,4 +253,24 @@ public class API{
 		DBManager.getInstance().updateDataBase();
 		return ans;
 	}
+	public static Map<String,Object> getLikes(Map<String,Object> income){
+		
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETLIKES);
+		Post rec = (Post) income.get("post");
+		Profile thePoster = rec.getPoster();
+		List<Profile> thelist = null;
+		List<Post> check = Server.profiles.get(thePoster.getUserName()).getPosts();
+		for (Post p : check ){
+			if(p.getTitle().equals(rec.getTitle()))
+			{
+				thelist = p.getLikedPeople();
+				break;
+			}
+		}
+		ans.put("likeslist",thelist);
+		DBManager.getInstance().updateDataBase();
+		return ans;
+	}
+
 }

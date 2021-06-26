@@ -119,4 +119,11 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (List<Comment>) recieved.get("commentslist");
 	}
+	public static List<Profile> getLikes(Post post){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("post", post);
+		toSend.put("command",Command.GETLIKES);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (List<Profile>) recieved.get("likeslist");
+	}
 }

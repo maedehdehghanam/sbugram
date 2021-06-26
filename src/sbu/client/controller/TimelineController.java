@@ -69,12 +69,18 @@ public class TimelineController{
 	private Button timelineposts;
 	@FXML
 	private Button chooseButton;
+    /*@FXML
+    private Button showLikes;*/
+    @FXML
+    private Button s;
 	@FXML
     private ImageView chosenImage;
     @FXML
     private Button profileCheck;
     @FXML
     private ImageView posterPic;
+    //@FXML
+    //private ImageView likeImage;
 
     public byte[] chosenimageByteArray = null;
 	private Profile user = Main.currentUser; 
@@ -296,14 +302,14 @@ public class TimelineController{
     	postList.setVisible(true);
     }
     //showing who has liked the post
-    public void showPostLike(MouseEvent event){
+    public void showPostLike(ActionEvent event){
     	updateTimeLine();
     	setButtonSelectedPost();
     	likeList.getItems().clear();
     	commentList.setVisible(false);
     	likeList.setVisible(true);
     	postList.setVisible(false);
-    	for (Profile p : Main.mainPost.getLikedPeople() ) {
+    	for (Profile p :API.getLikes(Main.mainPost) ) {
     		likeList.getItems().add(p.getUserName());
     	}
     	updateTimeLine();

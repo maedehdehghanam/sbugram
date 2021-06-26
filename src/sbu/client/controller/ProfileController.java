@@ -83,7 +83,7 @@ public class ProfileController{
         fullname.setText("name: "+Main.checkingUser.getName());
         following.setText("followings: "+String.valueOf(Main.checkingUser.getFollowings().size()));
         followers.setText("followers: "+String.valueOf(Main.checkingUser.getFollowers().size()));
-        birthyear.setText("Birthyear: "String.valueOf(Main.checkingUser.getBirthyear()));
+        birthyear.setText("Birthyear: "+String.valueOf(Main.checkingUser.getBirthyear()));
     	
     }
 

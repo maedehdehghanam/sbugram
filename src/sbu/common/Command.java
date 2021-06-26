@@ -6,6 +6,7 @@ public enum Command {
 	UPDATE,
 	GETALLUSERS,
 	GETCOMMENTS,
+	GETLIKES,
 	LOGIN,
 	SIGNUP,
 	LOGOUT,

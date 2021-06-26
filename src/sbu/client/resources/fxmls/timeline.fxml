@@ -5,12 +5,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <SplitPane dividerPositions="0.5250836120401338" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.TimelineController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="337.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
+    <AnchorPane fx:id="showLikes" minHeight="0.0" minWidth="0.0" onDragDetected="#showPostLike" prefHeight="337.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
          <children>
             <TextField fx:id="title" layoutX="171.0" layoutY="120.0" prefHeight="25.0" prefWidth="210.0" promptText="Title" />
             <TextArea fx:id="caption" layoutX="171.0" layoutY="151.0" prefHeight="100.0" prefWidth="210.0" promptText="Caption" style="-fx-background-color: #E5C1CD;" />
@@ -31,6 +32,16 @@
             <Button fx:id="login" layoutX="63.0" layoutY="15.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #1791B1;" text="Login " />
             <Button fx:id="profileCheck" layoutX="25.0" layoutY="189.0" mnemonicParsing="false" onAction="#profileChecking" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #766dc1;" text="Profile" />
             <ImageView fx:id="posterPic" fitHeight="123.0" fitWidth="149.0" layoutX="17.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="showLikes" layoutX="154.0" layoutY="50.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="15.0" style="-fx-background-color: #AAC9CE;" />
+            <Button fx:id="s" layoutX="145.0" layoutY="47.0" mnemonicParsing="false" onAction="#showPostLike" prefHeight="25.0" prefWidth="39.0" style="-fx-background-color: #AAC9CE;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../images/Like.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="398.0">
          <children>

@@ -81,6 +81,9 @@ public class ClientHandler implements Runnable{
 					case GETCOMMENTS:
 						answer = API.getComments(income);
 						break;
+					case GETLIKES :
+						answer = API.getLikes(income);
+						break;
  				}
 				socketOut.writeUnshared(answer);
 				socketOut.reset();
