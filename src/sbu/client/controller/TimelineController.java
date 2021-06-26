@@ -249,7 +249,7 @@ public class TimelineController{
     	commentList.setVisible(true);
     	likeList.setVisible(false);
     	postList.setVisible(false);
-    	for (Comment p : Main.mainPost.getComments() ) {
+    	for (Comment p : API.getComments(Main.mainPost) ) {
     		commentList.getItems().add(p.toString());
     	}
     	if((!commentfield.getText().equals("")) || commentfield.getText()==null){

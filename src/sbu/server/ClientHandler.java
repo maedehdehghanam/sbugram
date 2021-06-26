@@ -78,6 +78,9 @@ public class ClientHandler implements Runnable{
 					case UPDATE_PROFILE:
 						answer = API.updateProfile(income);
 						break;
+					case GETCOMMENTS:
+						answer = API.getComments(income);
+						break;
  				}
 				socketOut.writeUnshared(answer);
 				socketOut.reset();

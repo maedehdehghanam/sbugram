@@ -112,4 +112,11 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (boolean) recieved.get("success");
 	}
+	public static List<Comment> getComments(Post post){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("post", post);
+		toSend.put("command",Command.GETCOMMENTS);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (List<Comment>) recieved.get("commentslist");
+	}
 }

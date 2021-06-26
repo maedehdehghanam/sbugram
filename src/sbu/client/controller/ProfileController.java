@@ -79,11 +79,11 @@ public class ProfileController{
         } else{
         	thePic.setImage(null);
         }
-        username.setText(Main.checkingUser.getUserName());
-        fullname.setText(Main.checkingUser.getName());
-        following.setText(String.valueOf(Main.checkingUser.getFollowings().size()));
-        followers.setText(String.valueOf(Main.checkingUser.getFollowers().size()));
-        birthyear.setText(String.valueOf(Main.checkingUser.getBirthyear()));
+        username.setText("username: " + Main.checkingUser.getUserName());
+        fullname.setText("name: "+Main.checkingUser.getName());
+        following.setText("followings: "+String.valueOf(Main.checkingUser.getFollowings().size()));
+        followers.setText("followers: "+String.valueOf(Main.checkingUser.getFollowers().size()));
+        birthyear.setText("Birthyear: "String.valueOf(Main.checkingUser.getBirthyear()));
     	
     }
 

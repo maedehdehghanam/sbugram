@@ -170,7 +170,18 @@ public class API{
 	public static Map<String,Object> comment(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.COMMENT);
-		Post thePost = (Post) income.get("post");
+		Post rec = (Post) income.get("post");
+		Profile thePoster = rec.getPoster();
+		Post thePost = null;
+		List<Post> check = Server.profiles.get(thePoster.getUserName()).getPosts();
+		for (Post p : check ){
+			if(p.getTitle().equals(rec.getTitle()))
+			{
+				thePost = p;
+				break;
+			}
+		}
+		System.out.println(thePost.getComments().size());
 		Comment theComment = (Comment) income.get("comment");
 		thePost.addComment(theComment);
 		DBManager.getInstance().updateDataBase();
@@ -223,4 +234,23 @@ public class API{
 		Profile follow = (Profile) income.get("following");
 		Profile follower =(Profile) in
 	}*/
+	public static Map<String,Object> getComments(Map<String,Object> income){
+		
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETCOMMENTS);
+		Post rec = (Post) income.get("post");
+		Profile thePoster = rec.getPoster();
+		List<Comment> thelist = null;
+		List<Post> check = Server.profiles.get(thePoster.getUserName()).getPosts();
+		for (Post p : check ){
+			if(p.getTitle().equals(rec.getTitle()))
+			{
+				thelist = p.getComments();
+				break;
+			}
+		}
+		ans.put("commentslist",thelist);
+		DBManager.getInstance().updateDataBase();
+		return ans;
+	}
 }
