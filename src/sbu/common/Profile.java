@@ -93,6 +93,12 @@ public class Profile implements Serializable {
     public void deletePost(Post post){
       posts.remove(post);
     }
+    public List<Profile> getFollowings(){
+      return followings;
+    }
+    public List<Profile> getFollowers(){
+      return follwers;
+    }
     public void follow(Profile follow){
       followings.add(follow);
     }

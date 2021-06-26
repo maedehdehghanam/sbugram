@@ -44,6 +44,8 @@ public class ProfileController{
 	@FXML
 	private TextField username;
 	@FXML
+	private TextField birthyear;
+	@FXML
 	private TextField fullname;
 	@FXML
 	private TextField following;
@@ -57,8 +59,10 @@ public class ProfileController{
 	private TextField title;
 	@FXML
 	private Button logout;
-	/*@FXML
-	private Button timelineposts;*/
+	@FXML 
+	private Button login;
+	@FXML
+	private Button timelineposts;
 	@FXML
 	private ListView postList;
 
@@ -75,6 +79,11 @@ public class ProfileController{
         } else{
         	thePic.setImage(null);
         }
+        username.setText(Main.checkingUser.getUserName());
+        fullname.setText(Main.checkingUser.getName());
+        following.setText(String.valueOf(Main.checkingUser.getFollowings().size()));
+        followers.setText(String.valueOf(Main.checkingUser.getFollowers().size()));
+        birthyear.setText(String.valueOf(Main.checkingUser.getBirthyear()));
     	
     }
 
@@ -86,12 +95,21 @@ public class ProfileController{
     	postImage.setImage(null);
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
-    	if(posted.get(index).getPoster().getProfilepic()!=null){
-            postImage.setImage(new Image(new ByteArrayInputStream(posted.get(index).getPoster().getProfilepic())));
+    	if(posted.get(index).postImage()!=null){
+            postImage.setImage(new Image(new ByteArrayInputStream(posted.get(index).postImage())));
         } else{
         	postImage.setImage(null);
         }
 
+
+    }
+    //back to time line
+    public void timeline(ActionEvent e){
+    	sbu.client.Main.newfxml("timeline.fxml");
+    }
+    //login page
+    public void login(ActionEvent e){
+    	Main.newfxml("page1.fxml");
     }
     //logging out 
     public void logout(ActionEvent e){
