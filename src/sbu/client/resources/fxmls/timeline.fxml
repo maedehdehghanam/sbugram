@@ -27,7 +27,7 @@
             <TextField fx:id="commentfield" layoutX="17.0" layoutY="226.0" promptText="comment..." />
             <ImageView fx:id="chosenImage" fitHeight="199.0" fitWidth="353.0" layoutX="23.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="chooseButton" layoutX="74.0" layoutY="226.0" mnemonicParsing="false" onAction="#addImage" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #9F81CD;" text="Add Photo" />
-            <Button layoutX="178.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #9F81CD;" text="Search" />
+            <Button fx:id="search" layoutX="178.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #9F81CD;" text="Search" />
             <Button layoutX="123.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #9F81CD;" text="Profile" />
             <Button fx:id="login" layoutX="63.0" layoutY="15.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #1791B1;" text="Login " />
             <Button fx:id="profileCheck" layoutX="25.0" layoutY="189.0" mnemonicParsing="false" onAction="#profileChecking" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #766dc1;" text="Profile" />

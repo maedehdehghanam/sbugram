@@ -69,8 +69,8 @@ public class TimelineController{
 	private Button timelineposts;
 	@FXML
 	private Button chooseButton;
-    /*@FXML
-    private Button showLikes;*/
+    @FXML
+    private Button search;
     @FXML
     private Button s;
 	@FXML
@@ -328,6 +328,10 @@ public class TimelineController{
         }
     	posted = API.updateTimeline(Main.currentUser);
     	chosenImage.setImage(null);
+    }
+    //search usernames
+    public void search(ActionEvent e){
+        Main.newfxml("Search.fxml");
     }
     //back to login page
     public void login(ActionEvent e){
