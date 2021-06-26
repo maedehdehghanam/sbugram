@@ -1,19 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.35785953177257523" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.31270903010033446" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ProfileController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
          <children>
-            <ImageView fx:id="thepPic" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="thePic" fitHeight="143.0" fitWidth="192.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="username" editable="false" layoutX="40.0" layoutY="198.0" promptText="username" />
+            <TextField fx:id="fullname" editable="false" layoutX="40.0" layoutY="231.0" promptText="fullname" />
+            <TextField fx:id="followers" editable="false" layoutX="40.0" layoutY="300.0" promptText="followers" />
+            <TextField fx:id="following" editable="false" layoutX="40.0" layoutY="267.0" promptText="following" />
+            <Button fx:id="logout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" text="Button" />
+            <Button layoutX="318.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="214.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="114.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="214.0" layoutY="58.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Follow" />
+            <Button layoutX="214.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Mute" />
+            <Button layoutX="214.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Block" />
+            <TextField editable="false" layoutX="219.0" layoutY="198.0" promptText="birthyear" />
+            <TextField editable="false" layoutX="219.0" layoutY="231.0" promptText=" statuse" />
+            <TextField editable="false" layoutX="219.0" layoutY="267.0" promptText="Hobbys" />
+            <TextField editable="false" layoutX="219.0" layoutY="300.0" promptText="Place" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
          <children>
-            <ListView layoutY="-1.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #B6B4C2;" />
+            <SplitPane dividerPositions="0.056338028169014086" layoutY="-1.0" orientation="VERTICAL" prefHeight="570.0" prefWidth="398.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="396.0">
+                     <children>
+                        <ImageView fx:id="postImage" fitHeight="155.0" fitWidth="368.0" layoutX="14.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="title" editable="false" layoutX="218.0" layoutY="14.0" prefHeight="25.0" prefWidth="158.0" />
+                        <TextArea fx:id="caption" editable="false" layoutX="218.0" layoutY="48.0" prefHeight="155.0" prefWidth="158.0" />
+                        <Button layoutX="69.0" layoutY="58.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Like" />
+                        <Button layoutX="69.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="comment" />
+                        <Button layoutX="69.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="repost" />
+                        <TextField fx:id="commentfield" layoutX="34.0" layoutY="166.0" prefHeight="25.0" prefWidth="164.0" promptText="comment" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="396.0">
+                     <children>
+                        <ListView fx:id="postList" layoutX="-9.0" layoutY="2.0" prefHeight="576.0" prefWidth="407.0" style="-fx-background-color: #B6B4C2;" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
          </children></AnchorPane>
   </items>
 </SplitPane>

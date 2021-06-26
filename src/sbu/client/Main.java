@@ -12,6 +12,7 @@ public class Main extends Application {
 
     public static Profile currentUser = null;
     public static Post mainPost = null;
+    public static Profile checkingUser = null;
     public static Stage fStage=null;
     @Override
     public void start(Stage stage) throws Exception {

@@ -309,10 +309,10 @@ public class TimelineController{
     	updateTimeLine();
     }
     //
-    /*public void profileChecking(ActionEvent e){
+    public void profileChecking(ActionEvent e){
     	Main.checkingUser = Main.mainPost.getPoster();
     	Main.newfxml("Profile.fxml");
-    }*/
+    }
     //get updet posts
     public void updateTimeLine(){
     	if(user.getProfilepic()!=null){
