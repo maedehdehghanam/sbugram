@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.5735785953177257" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ProfileController">
+<SplitPane dividerPositions="0.5050167224080268" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ProfileController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
          <children>
@@ -22,14 +22,15 @@
             <Button fx:id="timelineposts" layoutX="214.0" layoutY="14.0" mnemonicParsing="false" onAction="#timeline" style="-fx-background-color: #9F81CD;" text="Timeline" />
             <Button fx:id="login" layoutX="114.0" layoutY="14.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #9F81CD;" text="Login" />
             <Button fx:id="flw" layoutX="214.0" layoutY="58.0" mnemonicParsing="false" onAction="#follow" prefHeight="25.0" prefWidth="158.0" text="Follow" />
-            <Button layoutX="214.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Mute" />
-            <Button layoutX="214.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Block" />
+            <Button fx:id="mute" layoutX="214.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Mute" />
+            <Button fx:id="block" layoutX="214.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Block" />
             <TextField fx:id="birthyear" editable="false" layoutX="219.0" layoutY="198.0" promptText="birthyear" />
             <TextField editable="false" layoutX="219.0" layoutY="231.0" promptText=" statuse" />
             <TextField editable="false" layoutX="219.0" layoutY="267.0" promptText="Hobbys" />
             <TextField editable="false" layoutX="219.0" layoutY="300.0" promptText="Place" />
+            <Button fx:id="edit" layoutX="212.0" layoutY="126.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="25.0" prefWidth="164.0" text="Button" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="527.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
          <children>
             <SplitPane dividerPositions="0.5306479859894921" layoutY="-2.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="398.0">
               <items>

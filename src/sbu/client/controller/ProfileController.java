@@ -69,10 +69,16 @@ public class ProfileController{
 	private Button allPosts;
 	@FXML
 	private Button like;
+	@FXML 
+	private Button edit;
 	@FXML
 	private Button comment;
 	@FXML
 	private Button flw;
+	@FXML
+	private Button block;
+	@FXML
+	private Button mute;
 	@FXML
 	private ListView postList;
 	@FXML
@@ -82,6 +88,7 @@ public class ProfileController{
 	private Post post;
 	private ArrayList<Post> posted = API.updateTimeline(Main.checkingUser);
 	public void initialize() {
+
 		commentList.setVisible(false);
     	likeList.setVisible(false);
     	postList.setVisible(true);
@@ -100,6 +107,17 @@ public class ProfileController{
         following.setText("followings: "+String.valueOf(Main.checkingUser.getFollowings().size()));
         followers.setText("followers: "+String.valueOf(Main.checkingUser.getFollowers().size()));
         birthyear.setText("Birthyear: "+String.valueOf(Main.checkingUser.getBirthyear()));
+        if(Main.checkingUser.getUserName().equals(Main.currentUser.getUserName())){
+        	edit.setVisible(true);
+			flw.setVisible(false);
+			block.setVisible(false);
+			mute.setVisible(false);
+        } else{
+        	edit.setVisible(false);
+			flw.setVisible(true);
+			block.setVisible(true);
+			mute.setVisible(true);
+        }
     	
     }
 
@@ -169,6 +187,10 @@ public class ProfileController{
     	}
     	Main.checkingUser = API.updateUser(Main.checkingUser);
 
+    }
+    //editprofile 
+    public void editProfile(ActionEvent e){
+    	sbu.client.Main.newfxml("EditProfile.fxml");
     }
     //back to time line
     public void timeline(ActionEvent e){

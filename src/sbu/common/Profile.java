@@ -9,6 +9,9 @@ public class Profile implements Serializable {
 	private String name;
 	private String password;
   private String iusername;
+  private String status = "";
+  private String hobbys="";
+  private String place="";
 	private final int birthyear;
 	private final RecoverOptions option;
 	private final String passRecover;
@@ -44,6 +47,24 @@ public class Profile implements Serializable {
     }
     public String toString() {
         return "" + username + ": " + name + "\nbirth year: " + birthyear + "";
+    }
+    public void setHobby(String hobby){
+      this.hobbys = hobby;
+    }
+    public String getHobby(){
+      return hobbys;
+    }
+    public void setStatus(String status){
+      this.status = status;
+    }
+     public String getStatus(){
+      return status;
+    }
+    public void setPlace(String place){
+      this.place = place;
+    }
+    public String getPlace(){
+      return place;
     }
     public void setNewProfilepic(byte[] chosenprofile){
       profileImage = chosenprofile;

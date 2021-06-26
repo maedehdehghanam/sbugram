@@ -240,13 +240,22 @@ public class API{
 		String changing = (String) income.get("change");
 		Profile person = Server.profiles.get((String) income.get("username"));
 		if(changing.equals("username")){
-			person.setUsername((String) income.get("changeable"));
+			Server.profiles.get((String) income.get("username")).setUsername((String) income.get("changeable"));
 		}
 		else if(changing.equals("password")){
-			person.setNewPassword((String) income.get("changeable"));
+			Server.profiles.get((String) income.get("username")).setNewPassword((String) income.get("changeable"));
 		}
 		else if(changing.equals("name")){
-			person.setName((String) income.get("changeable"));
+			Server.profiles.get((String) income.get("username")).setName((String) income.get("changeable"));
+		} else if(changing.equals("profileImage")) {
+			Server.profiles.get((String) income.get("username")).setNewProfilepic((byte[]) income.get("changeable"));
+
+		} else if(changing.equals("hobbys")){
+			Server.profiles.get((String) income.get("username")).setHobby((String) income.get("changeable"));
+		}else if(changing.equals("place")){
+			Server.profiles.get((String) income.get("username")).setPlace((String) income.get("changeable"));
+		}else if(changing.equals("status")){
+			Server.profiles.get((String) income.get("username")).setStatus((String) income.get("changeable"));
 		}
 		DBManager.getInstance().updateDataBase();
 		return ans;

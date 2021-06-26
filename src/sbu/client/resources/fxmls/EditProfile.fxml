@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #B6B4C2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.EditProfileController">
+   <children>
+      <ImageView fx:id="thePic" fitHeight="133.0" fitWidth="296.0" layoutX="44.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="username" editable="false" layoutX="126.0" layoutY="237.0" promptText="username" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="fullname" layoutX="126.0" layoutY="268.0" promptText="name" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="birthyear" editable="false" layoutX="126.0" layoutY="300.0" promptText="birthyear" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="status" layoutX="126.0" layoutY="335.0" promptText="status" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="hobby" layoutX="126.0" layoutY="369.0" promptText="hoppy" style="-fx-background-color: #9F81CD;" />
+      <TextField fx:id="place" layoutX="126.0" layoutY="404.0" promptText="place" style="-fx-background-color: #9F81CD;" />
+      <Button fx:id="saveChanges" layoutX="141.0" layoutY="445.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #FF2079;" text="save changes" />
+      <Button fx:id="addNewImage" layoutX="161.0" layoutY="204.0" mnemonicParsing="false" onAction="#addNewProfile" style="-fx-background-color: #FF2079;" text="new photo" />
+      <Button fx:id="timeline" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#timeline" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #9F81CD;" text="TimeLine" />
+      <Button fx:id="forgotPass" layoutX="141.0" layoutY="481.0" mnemonicParsing="false" onAction="#forgotpassControl" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #FF2079;" text="forgot password?" />
+   </children>
+</Pane>
