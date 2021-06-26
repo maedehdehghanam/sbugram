@@ -100,7 +100,7 @@ public class API{
 		ans.put("command",Command.REPOST);
 		Post posting = (Post) income.get("post");
 		Profile reposter = (Profile) income.get("reposter");
-		if(reposter.getPosts().contains(posting)){
+		if(Server.profiles.get(reposter.getUserName()).getPosts().contains(posting)){
 			Server.profiles.get(reposter.getUserName()).getPosts().remove(posting);
 		} else{
 			Server.profiles.get(reposter.getUserName()).getPosts().add(posting);
@@ -169,8 +169,10 @@ public class API{
 		Profile follow = (Profile) income.get("follow");
 		if(Server.profiles.get(follow.getUserName()).getFollowers().contains(profile)){
 			Server.profiles.get(follow.getUserName()).getFollowers().remove(profile);
+			Server.profiles.get(profile.getUserName()).getFollowings().remove(follow);
 		}else {
 			Server.profiles.get(follow.getUserName()).getFollowers().add(profile);
+			Server.profiles.get(profile.getUserName()).getFollowings().add(follow);
 		}
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));

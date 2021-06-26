@@ -268,12 +268,14 @@ public class TimelineController{
     	commentfield.setText("");
     }
     public void repostThePost(ActionEvent e){
+        Main.currentUser = API.updateUser(Main.currentUser);
+        Main.mainPost = API.updatePost(Main.mainPost);
     	if(Main.currentUser.getPosts().contains(Main.mainPost)){
-			boolean y = API.like(Main.mainPost,Main.currentUser);
+			API.repost(Main.mainPost,Main.currentUser);
 			unrepost.setVisible(true);
     		repost.setVisible(false);
     	}else{
-    		boolean x = API.like(Main.mainPost,Main.currentUser);
+    		API.like(Main.mainPost,Main.currentUser);
     		repost.setVisible(true);
     		unrepost.setVisible(false);
     	}
