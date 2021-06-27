@@ -36,6 +36,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 public class TimelineController{
 	@FXML
 	private TextArea caption;
@@ -345,10 +346,10 @@ public class TimelineController{
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
-        Alert a = new Alert(AlertType.NONE);
-        a.setAlertType(AlertType.INFORMATION);
-        a.setContentText("Hope you enjoyed SBUGRAM!");
-        a.show();
+        Alert a2 = new Alert(AlertType.NONE);
+        a2.setAlertType(AlertType.INFORMATION);
+        a2.setContentText("Hope you enjoyed SBUGRAM!");
+        a2.show();
          System.exit(0);
     }
 

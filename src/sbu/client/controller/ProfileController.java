@@ -36,6 +36,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 public class ProfileController{
 	@FXML
 	private ImageView thePic;
@@ -224,10 +225,10 @@ public class ProfileController{
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
-    	Alert a = new Alert(AlertType.NONE);
-        a.setAlertType(AlertType.INFORMATION);
-        a.setContentText("Hope you enjoyed SBUGRAM!");
-        a.show();
+    	Alert a3 = new Alert(AlertType.NONE);
+        a3.setAlertType(AlertType.INFORMATION);
+        a3.setContentText("Hope you enjoyed SBUGRAM!");
+        a3.show();
     	 System.exit(0);
     }
     public void searchPage(ActionEvent e){
