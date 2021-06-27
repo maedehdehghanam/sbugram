@@ -24,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 public class signupController {
 	//@FXML
 	//private ChoiceBox cb ;
@@ -42,6 +43,8 @@ public class signupController {
     @FXML
     private Label ageError;
     @FXML
+    private Label validpass;
+    @FXML
     private Label fillFields;
     @FXML
     private TextField fullName;
@@ -56,6 +59,8 @@ public class signupController {
     @FXML
     private ImageView profileImg;
     public byte[] profileImageByteArray;
+    private static final String passwordRegex="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+    private static final Pattern pattern = Pattern.compile(passwordRegex);
     public void connectToServer(){
         try{
             if ( !Connector.isConnected() ){
@@ -91,13 +96,19 @@ public class signupController {
         if( recover.isEmpty() || username.isEmpty() || birthyear.isEmpty()
          || fullname.isEmpty() || password.isEmpty()){
             fillFields.setVisible(true);
-            return;
+            
+        }
+        Matcher matcher = pattern.matcher(password);
+        if(password.length()<8 || !matcher.matches()){
+            validpass.setVisible(true);
+            
+
         }
         int birth = Integer.parseInt(birthyear);
         if( API.doesUserNameExists(username))
         {
             usernameTaken.setVisible(true);
-            return;
+            
         }
         if(2021-birth<18){
             ageError.setVisible(true);
@@ -128,6 +139,14 @@ public class signupController {
         }
         if(Main.currentUser == null)
             Main.currentUser = justCreatedProfile;
+
+        
+        Alert a = new Alert(AlertType.NONE);
+        a.setAlertType(AlertType.INFORMATION);
+        a.setContentText("WellCome to SBUGRAM!");
+        a.show();
+
+        Main.newfxml("page1.fxml");
 
     }
 
