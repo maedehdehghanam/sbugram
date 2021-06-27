@@ -345,6 +345,11 @@ public class TimelineController{
     //logging out 
     public void logout(ActionEvent e){
     	boolean a =  API.logout();
+        Alert a = new Alert(AlertType.NONE);
+        a.setAlertType(AlertType.INFORMATION);
+        a.setContentText("Hope you enjoyed SBUGRAM!");
+        a.show();
+         System.exit(0);
     }
 
 
