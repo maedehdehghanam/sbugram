@@ -54,6 +54,7 @@ public class EditProfileController{
 	@FXML
 	private Button addNewImage;
 	public byte[] profileImageByteArray;
+	 byte[] newimageToByteArray;
 	String usernamee;
 	String userhobby;
 	String userplace;
@@ -97,6 +98,9 @@ public class EditProfileController{
 		if(!userstatus.equals(status.getText())){
 			sbu.client.API.updateProfile(userName,password,usernamee,"status",status.getText());
 		} 
+		if(!newimageToByteArray.equals(profileImageByteArray)){
+			sbu.client.API.updateProfile(userName,password,usernamee,"profileImage",newimageToByteArray);
+		}
 		Main.currentUser = API.updateUser(Main.currentUser);
 		hobby.setText(Main.currentUser.getHobby());
 		fullname.setText(Main.currentUser.getName());
@@ -119,7 +123,7 @@ public class EditProfileController{
         byte[] imageToByteArray;
         try {
             imageToByteArray= Files.readAllBytes(file.toPath());
-            profileImageByteArray=imageToByteArray;
+            newimageToByteArray=imageToByteArray;
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

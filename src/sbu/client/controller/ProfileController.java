@@ -192,6 +192,7 @@ public class ProfileController{
     public void showAllPosts(ActionEvent e){
     	if(API.getUserPost(Main.checkingUser) != null)
 			posted = API.getUserPost(Main.checkingUser);
+		
 		for (Post p : posted ) {
     		postList.getItems().add(p.toString());
     	}
