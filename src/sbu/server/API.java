@@ -67,6 +67,20 @@ public class API{
 		ans.put("allusers",p);
 		return ans;
 	}
+	public static Map<String,Object> getFollowers(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETFOLLOWERS);
+		Profile p = (Profile) income.get("profile");
+		ans.put("followers",p.getFollowers());
+		return ans;
+	}
+	public static Map<String,Object> getFollowings(Map<String,Object> income){
+		Map<String,Object> ans = new HashMap<>();
+		ans.put("command",Command.GETFOLLOWINGS);
+		Profile p = (Profile) income.get("profile");
+		ans.put("followings",p.getFollowings());
+		return ans;
+	}
 	public static Map<String,Object> logout(Map<String,Object> income){
 		Map<String,Object> ans = new HashMap<>();
 		ans.put("command",Command.LOGOUT);
@@ -100,10 +114,10 @@ public class API{
 		ans.put("command",Command.REPOST);
 		Post posting = (Post) income.get("post");
 		Profile reposter = (Profile) income.get("reposter");
-		if(Server.profiles.get(reposter.getUserName()).getPosts().contains(posting)){
-			Server.profiles.get(reposter.getUserName()).getPosts().remove(posting);
+		if(reposter.getPosts().contains(posting)){
+			reposter.getPosts().remove(posting);
 		} else{
-			Server.profiles.get(reposter.getUserName()).getPosts().add(posting);
+			reposter.getPosts().add(posting);
 		}
 		DBManager.getInstance().updateDataBase();
 		ans.put("success", new Boolean(true));

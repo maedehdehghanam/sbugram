@@ -62,6 +62,8 @@ public class TimelineController{
 	private Button unlike;
 	@FXML
 	private Button unrepost;
+    @FXML
+    private Button userProfile;
 	@FXML
 	private TextField commentfield;
 	@FXML
@@ -129,6 +131,8 @@ public class TimelineController{
     public void newPost(ActionEvent event){
     	updateTimeLine();
     	setButtonNewPost();
+        caption.setEditable(true);
+        title.setEditable(true);
     	if(user.getProfilepic()!=null){
     		System.out.println("not null!");
             posterPic.setImage(new Image(new ByteArrayInputStream(user.getProfilepic())));
@@ -166,6 +170,8 @@ public class TimelineController{
     	chooseButton.setVisible(false);
     	publish.setVisible(false);
     	updateTimeLine();
+        caption.setEditable(false);
+        title.setEditable(false);
     	
     }
     //chose image
@@ -197,7 +203,8 @@ public class TimelineController{
     	int index = (postList.getSelectionModel().getSelectedIndex());
     	setPost(posted.get(index));
     	Main.mainPost = posted.get(index);
-
+        caption.setEditable(false);
+        title.setEditable(false);
     	if(posted.get(index).getPoster().getProfilepic()!=null){
             posterPic.setImage(new Image(new ByteArrayInputStream(posted.get(index).getPoster().getProfilepic())));
         } else{
@@ -320,7 +327,12 @@ public class TimelineController{
     	}
     	updateTimeLine();
     }
-    //
+    //user's profile
+    public void viewOwnProfile(ActionEvent e){
+        Main.checkingUser = API.updateUser(Main.currentUser);
+        Main.newfxml("Profile.fxml");
+    }
+    // check poster's profiles
     public void profileChecking(ActionEvent e){
     	Main.checkingUser = API.updateUser(Main.mainPost.getPoster());
     	Main.newfxml("Profile.fxml");

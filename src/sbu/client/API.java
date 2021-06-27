@@ -89,6 +89,7 @@ public class API{
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return  (ArrayList<Post>) recieved.get("userposts");
 	}
+
 	public static ArrayList<Post> updateTimeline(Profile user ){
 		Map<String,Object> toSend = new HashMap<>();
 		toSend.put("command", Command.UPDATE);
@@ -118,6 +119,20 @@ public class API{
 		toSend.put("command", Command.GETALLUSERS);
 		Map<String,Object> recieved = Connector.serve(toSend);
 		return (ArrayList<Profile>) recieved.get("allusers");
+	}
+	public static ArrayList<Profile> getFollowers(Profile p){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.GETFOLLOWERS);
+		toSend.put("profile",p);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (ArrayList<Profile>) recieved.get("followers");
+	}
+	public static ArrayList<Profile> getFollowings(Profile p){
+		Map<String,Object> toSend = new HashMap<>();
+		toSend.put("command", Command.GETFOLLOWINGS);
+		toSend.put("profile",p);
+		Map<String,Object> recieved = Connector.serve(toSend);
+		return (ArrayList<Profile>) recieved.get("followings");
 	}
 	public static Boolean comment(Post post,Comment cm){
 		Map<String,Object> toSend = new HashMap<>();

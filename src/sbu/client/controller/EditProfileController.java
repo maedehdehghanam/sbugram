@@ -98,7 +98,7 @@ public class EditProfileController{
 		if(!userstatus.equals(status.getText())){
 			sbu.client.API.updateProfile(userName,password,usernamee,"status",status.getText());
 		} 
-		if(!newimageToByteArray.equals(profileImageByteArray)){
+		if(! Arrays.equals(newimageToByteArray,(profileImageByteArray))){
 			sbu.client.API.updateProfile(userName,password,usernamee,"profileImage",newimageToByteArray);
 		}
 		Main.currentUser = API.updateUser(Main.currentUser);
@@ -106,6 +106,7 @@ public class EditProfileController{
 		fullname.setText(Main.currentUser.getName());
 		status.setText(Main.currentUser.getStatus());
 		place.setText(Main.currentUser.getPlace());
+		sbu.client.Main.newfxml("timeline.fxml");
 
 	}
 

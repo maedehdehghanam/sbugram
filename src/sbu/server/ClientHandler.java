@@ -93,6 +93,12 @@ public class ClientHandler implements Runnable{
 					case GETUSERPOST :
 						answer = API.getUserPost(income);
 						break;
+					case GETFOLLOWERS:
+						answer = API.getFollowers(income);
+						break;
+					case GETFOLLOWINGS:
+						answer =  API.getFollowings(income);
+						break;
  				}
 				socketOut.writeUnshared(answer);
 				socketOut.reset();

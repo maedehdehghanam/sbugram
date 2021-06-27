@@ -87,11 +87,19 @@ public class ProfileController{
 	@FXML
 	private Button mute;
 	@FXML
+	private Button showFollower;
+	@FXML
+	private Button showFollowing;
+	@FXML
 	private ListView postList;
 	@FXML
 	private ListView likeList;
 	@FXML
 	private ListView commentList;
+	@FXML
+	private ListView followersList;
+	@FXML
+	private ListView followingsList;
 	@FXML
 	private Label samePlace;
 	private Post post;
@@ -101,6 +109,8 @@ public class ProfileController{
 			posted = API.getUserPost(Main.checkingUser);
 		commentList.setVisible(false);
     	likeList.setVisible(false);
+    	followersList.setVisible(false);
+    	followingsList.setVisible(false);
     	postList.setVisible(true);
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -160,6 +170,8 @@ public class ProfileController{
     	commentList.setVisible(true);
     	likeList.setVisible(false);
     	postList.setVisible(false);
+    	followersList.setVisible(false);
+    	followingsList.setVisible(false);
     	for (Comment p : API.getComments(post) ) {
     		commentList.getItems().add(p.toString());
     	}
@@ -200,6 +212,34 @@ public class ProfileController{
     	postList.setVisible(true);
     	likeList.setVisible(false);
     	commentList.setVisible(false);
+    	followersList.setVisible(false);
+    	followingsList.setVisible(false);
+    }
+    //show followers
+     public void showFollowers(ActionEvent e){
+    	ArrayList<Profile> follower = API.getFollowers(Main.checkingUser);
+		followersList.getItems().clear();
+		for (Profile p : follower ) {
+    		followersList.getItems().add(p.getUserName());
+    	}
+    	postList.setVisible(false);
+    	likeList.setVisible(false);
+    	commentList.setVisible(false);
+    	followersList.setVisible(true);
+    	followingsList.setVisible(false);
+    }
+    //show followings
+    public void showFollowings(ActionEvent e){
+    	ArrayList<Profile> following = API.getFollowings(Main.checkingUser);
+		followingsList.getItems().clear();
+		for (Profile p : following ) {
+    		followingsList.getItems().add(p.getUserName());
+    	}
+    	postList.setVisible(false);
+    	likeList.setVisible(false);
+    	commentList.setVisible(false);
+    	followersList.setVisible(false);
+    	followingsList.setVisible(true);
     }
     //follow!
     public void follow(ActionEvent e){

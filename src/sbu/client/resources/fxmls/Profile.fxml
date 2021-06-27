@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.6454849498327759" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ProfileController">
+<SplitPane dividerPositions="0.6003344481605352" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sbu.client.controller.ProfileController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="398.0" style="-fx-background-color: #AAC9CE;">
          <children>
@@ -31,12 +31,14 @@
             <TextField fx:id="place" editable="false" layoutX="219.0" layoutY="300.0" promptText="Place" />
             <Button fx:id="edit" layoutX="212.0" layoutY="126.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="25.0" prefWidth="164.0" text="Edit Profile " />
             <Label fx:id="samePlace" layoutX="41.0" layoutY="335.0" prefHeight="15.0" prefWidth="217.0" text="You and this user live in same place!" textFill="#0c6b03" visible="false" />
+            <Button fx:id="showFollower" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#showFollowers" />
+            <Button fx:id="showFollowing" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" onAction="#showFollowings" />
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
          <children>
-            <SplitPane dividerPositions="0.5306479859894921" layoutY="-2.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="398.0">
+            <SplitPane dividerPositions="0.3905429071803853" layoutY="-4.0" orientation="VERTICAL" prefHeight="573.0" prefWidth="398.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="396.0" style="-fx-background-color: #F3DBCF;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="396.0" style="-fx-background-color: #F3DBCF;">
                      <children>
                         <ImageView fx:id="postImage" fitHeight="155.0" fitWidth="368.0" layoutX="14.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
                         <TextField fx:id="title" editable="false" layoutX="218.0" layoutY="14.0" prefHeight="25.0" prefWidth="158.0" />
@@ -48,11 +50,13 @@
                         <Button fx:id="allPosts" layoutX="69.0" layoutY="27.0" mnemonicParsing="false" onAction="#showAllPosts" prefHeight="25.0" prefWidth="79.0" text="All Posts" />
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="396.0" style="-fx-background-color: #B6B4C2;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="398.0" style="-fx-background-color: #B6B4C2;">
                      <children>
                         <ListView fx:id="postList" layoutX="-9.0" layoutY="2.0" onMouseClicked="#showPost" prefHeight="576.0" prefWidth="407.0" style="-fx-background-color: #B6B4C2;" />
                         <ListView fx:id="commentList" prefHeight="587.0" prefWidth="396.0" style="-fx-background-color: #F3DBCF;" />
                         <ListView fx:id="likeList" prefHeight="587.0" prefWidth="398.0" />
+                        <ListView fx:id="followersList" layoutY="2.0" prefHeight="563.0" prefWidth="400.0" />
+                        <ListView fx:id="followingsList" prefHeight="542.0" prefWidth="396.0" />
                      </children>
                   </AnchorPane>
               </items>
