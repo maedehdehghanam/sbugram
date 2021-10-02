@@ -29,6 +29,7 @@ public class Profile implements Serializable {
 		this.option = option;
 		this.passRecover = passRecover;
     this.profileImage = profileImage;
+    this.allPosts = new ArrayList<>();
     iusername = username;
 	}
 	public int hashCode() {

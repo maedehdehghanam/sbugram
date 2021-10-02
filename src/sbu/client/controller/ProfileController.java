@@ -203,6 +203,7 @@ public class ProfileController{
     }
     //show all posts
     public void showAllPosts(ActionEvent e){
+    	postList.getItems().clear();
     	if(API.getUserPost(Main.checkingUser) != null)
 			posted = API.getUserPost(Main.checkingUser);
 		

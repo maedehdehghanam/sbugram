@@ -42,7 +42,7 @@ public class DBManager{
 	}
 	public synchronized void updateDataBase(){
 		  try {
-		  		System.out.println(Server.profiles.get("a").getAllPosts().size());
+		  		//System.out.println(Server.profiles.get("a").getAllPosts().size());
 			      FileOutputStream fout = new FileOutputStream(profilesPath);
 			      ObjectOutputStream objToFile = new ObjectOutputStream(fout);
 			      objToFile.writeObject(Server.profiles); //writing profiles

@@ -1,5 +1,4 @@
 *.class
 out/
 javafx-sdk/
-DataBase/
 sources.txt
